@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1l53wagtm8ep"]
+
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_hh574"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelDisplay" parent="." instance=ExtResource("1_hh574")]
+layout_mode = 1
+offset_left = 219.2
+offset_top = -29.6
+offset_right = 589.2
+offset_bottom = 340.4

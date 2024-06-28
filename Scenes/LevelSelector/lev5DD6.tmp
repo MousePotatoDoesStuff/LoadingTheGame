@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyb5brr6c3174"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelector/level_sel_dropdown.gd" id="1_7cyp4"]
+[ext_resource type="PackedScene" uid="uid://caybilu3wa5iy" path="res://Scenes/LevelSelector/level_sel_frame.tscn" id="1_q0jj3"]
+
+[node name="LevelSelDropdown" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 450.0
+offset_bottom = 900.0
+script = ExtResource("1_7cyp4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(450, 750)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DropdownControl" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(450, 10000)
+layout_mode = 2
+
+[node name="LevelSelFrame" parent="ScrollContainer/DropdownControl" instance=ExtResource("1_q0jj3")]
+offset_left = 11.0
+offset_top = 167.0
+offset_right = 411.0
+offset_bottom = 417.0
+
+[node name="Header" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 450.0
+offset_bottom = 150.0
+color = Color(0.211765, 0.243137, 0.321569, 1)

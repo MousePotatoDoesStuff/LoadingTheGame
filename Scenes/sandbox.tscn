@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0wce7yy0yi8l"]
+
+[ext_resource type="PackedScene" uid="uid://caybilu3wa5iy" path="res://Scenes/LevelSelector/level_sel_frame.tscn" id="1_5ycbg"]
+
+[node name="Sandbox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.444
+offset_top = -1.0
+offset_bottom = -0.600037
+follow_focus = true
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/ColorRect"]
+layout_mode = 0
+offset_left = 386.0
+offset_right = 464.0
+offset_bottom = 92.0
+color = Color(1, 0, 1, 1)
+
+[node name="LevelSelFrame" parent="." instance=ExtResource("1_5ycbg")]
+offset_left = 38.8367
+offset_top = 190.749
+offset_right = 38.8367
+offset_bottom = 190.749
+scale = Vector2(3, 3)

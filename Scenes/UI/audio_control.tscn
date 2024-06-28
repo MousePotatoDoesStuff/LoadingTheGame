@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfuxljwo1xdpx"]
+
+[ext_resource type="Script" path="res://Scripts/audio_control.gd" id="1_egtu8"]
+
+[node name="AudioControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 200.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_egtu8")
+
+[node name="Slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 42.0
+offset_right = 1235.0
+offset_bottom = 242.0
+value = 100.0
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 33.0
+offset_right = 568.0
+offset_bottom = 109.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Audio"
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 16.0
+offset_right = 636.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 50
+text = "Mute"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="value_changed" from="Slider" to="." method="checkupdate"]
+[connection signal="button_up" from="Reset" to="." method="toggle_mute"]

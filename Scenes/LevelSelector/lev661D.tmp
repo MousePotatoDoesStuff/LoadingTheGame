@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyb5brr6c3174"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelector/level_sel_dropdown.gd" id="1_7cyp4"]
+[ext_resource type="PackedScene" uid="uid://caybilu3wa5iy" path="res://Scenes/LevelSelector/level_sel_frame.tscn" id="1_q0jj3"]
+
+[node name="LevelSelDropdown" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7cyp4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(450, 900)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DropdownControl" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(450, 10000)
+layout_mode = 2
+
+[node name="LevelSelFrame" parent="ScrollContainer/DropdownControl" instance=ExtResource("1_q0jj3")]
+visible = false
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 425.0
+offset_bottom = 275.0

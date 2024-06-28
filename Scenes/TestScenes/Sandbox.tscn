@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://3us255xnay0t"]
+
+[ext_resource type="PackedScene" uid="uid://0vkvsfbcp2w6" path="res://Scenes/UI/popup_message.tscn" id="1_lk5uo"]
+
+[node name="Sandbox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupMessage" parent="." instance=ExtResource("1_lk5uo")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.004
+anchor_right = 0.739
+anchor_bottom = 0.896
+offset_left = 0.799995
+offset_top = 0.4
+offset_right = -0.400024
+offset_bottom = -0.400024
+grow_horizontal = 1
+grow_vertical = 1

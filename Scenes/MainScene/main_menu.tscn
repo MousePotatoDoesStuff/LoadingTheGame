@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvsyu1vcuebg2"]
+
+[ext_resource type="Script" path="res://Scripts/util/screen_adjusted.gd" id="1_7ftq6"]
+[ext_resource type="Script" path="res://Scenes/MainScene/main_menu.gd" id="1_k2mav"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k2mav")
+
+[node name="ScreenAdjuster" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 840.0
+offset_bottom = 490.0
+script = ExtResource("1_7ftq6")
+
+[node name="PlayButton" type="Button" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = -150.0
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="LoadButton" type="Button" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = -25.0
+theme_override_font_sizes/font_size = 32
+text = "Load level"
+
+[node name="LGSButton" type="Button" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 24
+text = "Level sequence settings"
+
+[node name="SettingsButton" type="Button" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 125.0
+offset_right = 200.0
+offset_bottom = 225.0
+theme_override_font_sizes/font_size = 32
+text = "Game settings"
+
+[node name="ExitButton" type="Button" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 250.0
+offset_right = 200.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 32
+text = "Exit game"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScreenAdjuster"]
+layout_mode = 0
+offset_left = -320.0
+offset_top = -400.0
+offset_right = 320.0
+offset_bottom = -240.0
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Loading: The Game"
+
+[connection signal="pressed" from="ScreenAdjuster/PlayButton" to="." method="startgame"]
+[connection signal="pressed" from="ScreenAdjuster/LoadButton" to="." method="selectlevel"]
+[connection signal="pressed" from="ScreenAdjuster/LGSButton" to="." method="lgs"]
+[connection signal="pressed" from="ScreenAdjuster/SettingsButton" to="." method="options"]
+[connection signal="pressed" from="ScreenAdjuster/ExitButton" to="." method="exit"]

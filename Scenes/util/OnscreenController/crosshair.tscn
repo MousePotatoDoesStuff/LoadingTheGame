@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://4j5hicqult7v"]
+
+[ext_resource type="Script" path="res://Scenes/util/OnscreenController/crosshair.gd" id="1_5dj1m"]
+[ext_resource type="Script" path="res://Scenes/util/OnscreenController/crosshair_quad.gd" id="2_1hxw4"]
+
+[node name="Crosshair" type="Control"]
+layout_mode = 3
+anchor_right = 0.125
+anchor_bottom = 0.222
+offset_bottom = 0.199982
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5dj1m")
+metadata/_edit_use_anchors_ = true
+
+[node name="xm" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+script = ExtResource("2_1hxw4")
+direction = Vector2(1, -1)
+
+[node name="ColorRect" type="ColorRect" parent="xm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+offset_left = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="xm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="px" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1hxw4")
+
+[node name="ColorRect" type="ColorRect" parent="px"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="px"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="xp" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+script = ExtResource("2_1hxw4")
+direction = Vector2(-1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="xp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="xp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.01
+anchor_right = 0.25
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="mx" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource("2_1hxw4")
+direction = Vector2(-1, -1)
+
+[node name="ColorRect" type="ColorRect" parent="mx"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="mx"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.01
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

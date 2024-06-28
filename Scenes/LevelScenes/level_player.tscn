@@ -1,0 +1,283 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg7kaibc4u4kj"]
+
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_ac4e0"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/level_player.gd" id="1_tjmos"]
+[ext_resource type="PackedScene" uid="uid://cccvuli1p3mka" path="res://Scenes/LevelScenes/LvPlySpMn/level_player_super_menu.tscn" id="2_58mln"]
+[ext_resource type="PackedScene" uid="uid://l0e85mf5or8e" path="res://Scenes/util/OnscreenController/onscreen_controller.tscn" id="3_5klic"]
+[ext_resource type="Script" path="res://Scripts/util/screen_adjusted.gd" id="3_qjyhk"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/Buttons/SkipButton.gd" id="4_wj7s4"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/TestTimer.gd" id="5_i8yqm"]
+
+[node name="LevelPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjmos")
+
+[node name="LPMControl" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.219
+anchor_bottom = 1.0
+offset_right = -0.400024
+
+[node name="LeftPlayMenu" parent="LPMControl" instance=ExtResource("2_58mln")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.857
+anchor_bottom = 0.556
+offset_right = 0.0499878
+offset_bottom = -0.400055
+
+[node name="LevelDisplay" parent="." instance=ExtResource("1_ac4e0")]
+layout_mode = 1
+anchor_left = 0.219
+anchor_top = 0.0
+anchor_right = 0.768
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_top = 0.0
+offset_right = 21.2
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.975975, 1)
+
+[node name="Out Of Moves" type="ColorRect" parent="LevelDisplay"]
+self_modulate = Color(1, 0, 0, 0.270588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="LevelDisplay/Out Of Moves"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 284.0
+offset_right = 701.0
+offset_bottom = 592.0
+color = Color(0.211765, 0.243137, 0.321569, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelDisplay/Out Of Moves/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]
+StackOverflowError"
+
+[node name="Undo2" type="Button" parent="LevelDisplay/Out Of Moves/ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0588235
+anchor_top = 0.519481
+anchor_right = 0.45098
+anchor_bottom = 0.844156
+theme_override_font_sizes/font_size = 32
+text = "Undo"
+metadata/_edit_use_anchors_ = true
+
+[node name="Reset2" type="Button" parent="LevelDisplay/Out Of Moves/ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54902
+anchor_top = 0.519481
+anchor_right = 0.941176
+anchor_bottom = 0.844156
+theme_override_font_sizes/font_size = 32
+text = "Reset"
+metadata/_edit_use_anchors_ = true
+
+[node name="Complete" type="ColorRect" parent="LevelDisplay"]
+self_modulate = Color(0, 1, 0, 0.270588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="LevelDisplay/Complete"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 284.0
+offset_right = 701.0
+offset_bottom = 592.0
+color = Color(0.211765, 0.243137, 0.321569, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelDisplay/Complete/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]
+Loading complete"
+
+[node name="Continue2" type="Button" parent="LevelDisplay/Complete/ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.38649
+anchor_top = 0.0584084
+anchor_right = -0.386491
+anchor_bottom = 0.258408
+offset_left = 757.111
+offset_top = 132.01
+offset_right = 647.111
+offset_bottom = 170.41
+theme_override_font_sizes/font_size = 32
+text = "Continue
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="RightPlayMenu" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.774
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.599976
+offset_right = -36.0
+offset_bottom = -91.0
+grow_horizontal = 0
+scale = Vector2(1.11222, 1.11222)
+
+[node name="Undo" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0243326
+anchor_top = 0.0180467
+anchor_right = 0.947333
+anchor_bottom = 0.155441
+offset_left = 0.183846
+offset_top = 11.4742
+offset_right = 0.208862
+offset_bottom = 0.322426
+theme_override_font_sizes/font_size = 32
+text = "Undo"
+metadata/_edit_use_anchors_ = true
+
+[node name="Reset" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.137
+anchor_right = 0.954
+anchor_bottom = 0.262
+offset_left = -7.37769
+offset_top = 42.9135
+offset_right = -7.35269
+offset_bottom = 41.7885
+theme_override_font_sizes/font_size = 32
+text = "Reset"
+
+[node name="EditButton3" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 4.49552
+offset_top = 287.713
+offset_right = -20.5045
+offset_bottom = 227.713
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Edit"
+
+[node name="Skip" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 6.29373
+offset_top = 413.587
+offset_right = -18.7063
+offset_bottom = 353.587
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Skip"
+script = ExtResource("4_wj7s4")
+
+[node name="Continue" type="Button" parent="RightPlayMenu"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 4.49552
+offset_top = 537.663
+offset_right = -20.5045
+offset_bottom = 475.863
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Continue
+"
+
+[node name="Moves" type="RichTextLabel" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018
+anchor_top = 0.839
+anchor_right = 0.92
+anchor_bottom = 0.953
+offset_left = -4.85
+offset_top = 0.248962
+offset_bottom = 0.0229492
+bbcode_enabled = true
+text = "[center]Moves remaining:
+20"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 350.0
+offset_bottom = 400.0
+grow_vertical = 0
+scale = Vector2(1.11222, 1.11222)
+
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.11222, 1.11222)
+script = ExtResource("3_qjyhk")
+
+[node name="Controller" parent="Control/Control2" instance=ExtResource("3_5klic")]
+layout_mode = 1
+anchor_left = 0.141
+anchor_top = -0.627
+anchor_right = 0.713
+anchor_bottom = -0.127
+offset_left = 0.100544
+offset_top = -0.0491028
+offset_right = -0.0994873
+offset_bottom = -0.049118
+
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("5_i8yqm")
+
+[connection signal="intsig" from="LPMControl/LeftPlayMenu" to="." method="menu_command"]
+[connection signal="stoppedMoving" from="LevelDisplay" to="." method="finalize_step"]
+[connection signal="pressed" from="LevelDisplay/Out Of Moves/ColorRect2/Undo2" to="." method="undo"]
+[connection signal="pressed" from="LevelDisplay/Out Of Moves/ColorRect2/Reset2" to="." method="reset"]
+[connection signal="pressed" from="LevelDisplay/Complete/ColorRect2/Continue2" to="." method="next_level"]
+[connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
+[connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]
+[connection signal="pressed" from="RightPlayMenu/Skip" to="." method="next_level"]
+[connection signal="pressed" from="RightPlayMenu/Continue" to="." method="next_level"]
+[connection signal="ControlSignal" from="Control/Control2/Controller" to="." method="accept_input"]

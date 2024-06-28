@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtacw53htnw4t"]
+
+[ext_resource type="Script" path="res://Scenes/TestScenes/TestLevelPlayer.gd" id="1_8osl7"]
+[ext_resource type="PackedScene" uid="uid://dg7kaibc4u4kj" path="res://Scenes/LevelScenes/level_player.tscn" id="1_jkaoj"]
+[ext_resource type="PackedScene" uid="uid://e83raqygpblo" path="res://Scenes/util/AudioController/audio_controller.tscn" id="2_gl0sy"]
+
+[node name="TestLevelPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8osl7")
+
+[node name="AudioController" parent="." instance=ExtResource("2_gl0sy")]
+
+[node name="LevelPlayer" parent="." instance=ExtResource("1_jkaoj")]
+layout_mode = 1
+
+[connection signal="IP_send_signal" from="LevelPlayer" to="AudioController" method="get_input_pass"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg7kaibc4u4kj"]
+
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_ac4e0"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/level_player.gd" id="1_tjmos"]
+[ext_resource type="PackedScene" uid="uid://l0e85mf5or8e" path="res://Scenes/util/OnscreenController/onscreen_controller.tscn" id="3_5klic"]
+
+[node name="LevelPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjmos")
+
+[node name="LevelDisplay" parent="." instance=ExtResource("1_ac4e0")]
+layout_mode = 1
+anchor_left = 0.219
+anchor_top = 0.0
+anchor_right = 0.781
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_top = 0.0
+offset_right = 0.400024
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controller" parent="." instance=ExtResource("3_5klic")]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 492.0
+offset_right = 11.0
+offset_bottom = 492.4

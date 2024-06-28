@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://cccvuli1p3mka"]
+
+[ext_resource type="Script" path="res://Scripts/util/toggle_button_menu.gd" id="1_toqjd"]
+
+[node name="LeftPlayMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 500.0
+script = ExtResource("1_toqjd")
+
+[node name="SelectLevel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_font_sizes/font_size = 32
+text = "Select level"
+metadata/_edit_use_anchors_ = true
+
+[node name="PrevLevel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 110.0
+offset_right = -10.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 32
+text = "Previous level
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="NextLevel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 210.0
+offset_right = -10.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 32
+text = "Next level"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 310.0
+offset_right = -10.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 32
+text = "Exit to menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 410.0
+offset_right = -10.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 32
+text = "Exit game"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="PrevLevel" to="." method="_on_prev_level_pressed"]
+[connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

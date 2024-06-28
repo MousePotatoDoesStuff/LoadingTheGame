@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://47oenbci4as6"]
+
+[ext_resource type="Script" path="res://Scenes/SequenceEditor/level_sequence_editor.gd" id="1_j0kp2"]
+[ext_resource type="PackedScene" uid="uid://dyb5brr6c3174" path="res://Scenes/LevelSelector/level_sel_dropdown.tscn" id="3_eqtec"]
+[ext_resource type="PackedScene" uid="uid://ddmv7vhwldudp" path="res://Scenes/UI/level_data_export.tscn" id="3_nwl2l"]
+
+[node name="LevelSequenceEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j0kp2")
+
+[node name="level_data_export" parent="." instance=ExtResource("3_nwl2l")]
+visible = false
+layout_mode = 1
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 800.0
+offset_bottom = 450.0
+
+[node name="CurLevelSet" parent="." instance=ExtResource("3_eqtec")]
+offset_left = 450.0
+offset_right = 900.0
+
+[node name="ClipboardSet" parent="." instance=ExtResource("3_eqtec")]
+offset_left = 1000.0
+offset_right = 1450.0
+
+[node name="LevelSet_List" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 91.0
+offset_right = 405.0
+offset_bottom = 227.0

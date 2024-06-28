@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://uefjo1h2x6lf"]
+
+[ext_resource type="Texture2D" uid="uid://b3jw65ah1kbkr" path="res://Assets/icon.svg" id="1_4ko27"]
+[ext_resource type="Script" path="res://Scenes/util/Playheads/playhead.gd" id="1_7wxlw"]
+
+[node name="Playhead" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1584.0
+offset_bottom = -884.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7wxlw")
+move_time = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_4ko27")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="finishUpdate"]

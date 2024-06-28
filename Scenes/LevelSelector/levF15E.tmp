@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmxwko0uy1gg"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelector/level_selector.gd" id="1_roblr"]
+[ext_resource type="Script" path="res://Scripts/util/screen_adjusted.gd" id="2_jbp1d"]
+
+[node name="level_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_roblr")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 1055.0
+offset_bottom = 875.0
+script = ExtResource("2_jbp1d")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -724.0
+offset_top = -411.0
+offset_right = 687.0
+offset_bottom = 391.0
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 48.0
+offset_right = 438.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[center]Load level"
+
+[node name="Button" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 476.0
+offset_right = 416.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 50
+text = "Play Level"
+
+[node name="Button2" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 626.0
+offset_right = 420.0
+offset_bottom = 736.0
+theme_override_font_sizes/font_size = 50
+text = "Return"
+
+[node name="OptionButton" type="OptionButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 332.0
+offset_right = 410.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 32
+item_count = 2
+selected = 0
+popup/item_0/text = "Test"
+popup/item_0/id = 0
+popup/item_1/text = "Test2"
+popup/item_1/id = 1
+
+[node name="SelectLevelset" type="OptionButton" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 182.0
+offset_right = 410.0
+offset_bottom = 282.0
+theme_override_font_sizes/font_size = 32
+item_count = 1
+selected = 0
+popup/item_0/text = "Test"
+popup/item_0/id = 0
+
+[connection signal="pressed" from="Control/ColorRect/Button" to="." method="select_level"]
+[connection signal="pressed" from="Control/ColorRect/Button2" to="." method="back"]

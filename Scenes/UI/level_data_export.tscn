@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddmv7vhwldudp"]
+
+[ext_resource type="Script" path="res://Scenes/UI/level_data_export.gd" id="1_lhlei"]
+
+[node name="level_data_export" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lhlei")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+color = Color(0, 0, 0.270588, 1)
+
+[node name="TextEdit" type="TextEdit" parent="ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 790.0
+offset_bottom = 308.0
+
+[node name="Apply" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 325.0
+offset_right = 300.0
+offset_bottom = 375.0
+text = "Apply"
+
+[node name="Close" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 325.0
+offset_right = 700.0
+offset_bottom = 375.0
+text = "Close"
+
+[connection signal="pressed" from="ColorRect/Apply" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/Close" to="." method="_on_button_2_pressed"]

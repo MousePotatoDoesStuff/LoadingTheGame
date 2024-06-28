@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://elrp01s13q3r"]
+
+[ext_resource type="Texture2D" uid="uid://bai6kcti6iya2" path="res://icon.svg" id="1_ukoon"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(801, 347)
+texture = ExtResource("1_ukoon")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 423.0
+offset_right = 791.0
+offset_bottom = 525.0
+scale = Vector2(2, 2)
+bbcode_enabled = true
+text = "[center]Made with Godot
+
+Loading screen by Mouse Potato Does Stuff"

@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuigedhtp0l70"]
+
+[ext_resource type="PackedScene" uid="uid://c3mw7xumi10bw" path="res://Scenes/UI/confirm_action_prompt.tscn" id="1_h1tyv"]
+[ext_resource type="Script" path="res://Scripts/options_scene.gd" id="1_xsu8i"]
+[ext_resource type="Script" path="res://Scripts/util/screen_adjusted.gd" id="2_t746i"]
+[ext_resource type="PackedScene" uid="uid://dfuxljwo1xdpx" path="res://Scenes/UI/audio_control.tscn" id="4_7rbae"]
+[ext_resource type="AudioStream" uid="uid://cmwdkoq3oo76q" path="res://Assets/Audio/Sound/move1.wav" id="5_wtwou"]
+
+[node name="options_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xsu8i")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 840.0
+offset_bottom = 490.0
+script = ExtResource("2_t746i")
+
+[node name="return" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 250.0
+offset_right = 200.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 50
+text = "Return to menu"
+
+[node name="Reset" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -534.0
+offset_top = 69.0
+offset_right = -134.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 50
+text = "Reset save data"
+
+[node name="HyperReset" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 69.0
+offset_right = 471.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 50
+text = "Reset game and exit"
+
+[node name="AudioControl" parent="Control" instance=ExtResource("4_7rbae")]
+offset_left = -688.0
+offset_top = -390.0
+offset_right = 512.0
+offset_bottom = -190.0
+
+[node name="SoundControl" parent="Control" instance=ExtResource("4_7rbae")]
+offset_left = -690.0
+offset_top = -253.0
+offset_right = 510.0
+offset_bottom = -53.0
+title = "Sound"
+saveas = "sound"
+
+[node name="MusicControl" parent="Control" instance=ExtResource("4_7rbae")]
+offset_left = -682.0
+offset_top = -121.0
+offset_right = 518.0
+offset_bottom = 79.0
+title = "Music"
+saveas = "music"
+
+[node name="ConfirmActionPrompt" parent="Control" instance=ExtResource("1_h1tyv")]
+visible = false
+offset_left = -206.0
+offset_top = -153.0
+offset_right = 194.0
+offset_bottom = 47.0
+
+[node name="ping" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource("5_wtwou")
+bus = &"Sound"
+
+[connection signal="pressed" from="Control/return" to="." method="rtm"]
+[connection signal="volume_changed" from="Control/AudioControl" to="." method="PassAudio"]
+[connection signal="volume_changed" from="Control/SoundControl" to="." method="PassAudio"]
+[connection signal="volume_changed" from="Control/MusicControl" to="." method="PassAudio"]
+[connection signal="Approved" from="Control/ConfirmActionPrompt" to="." method="commandConfirmed"]

@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=3 uid="uid://caybilu3wa5iy"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelector/level_sel_frame.gd" id="1_d8tdi"]
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_v42sm"]
+[ext_resource type="Texture2D" uid="uid://drabhig4oebcf" path="res://Assets/Images/buttons/copy.png" id="3_jg3ae"]
+[ext_resource type="Texture2D" uid="uid://cuq473ju0hxo1" path="res://Assets/Images/buttons/copy_clicked.png" id="4_gsb68"]
+[ext_resource type="Texture2D" uid="uid://cj3slcyhcowip" path="res://Assets/Images/buttons/copy_hover.png" id="5_t6hri"]
+[ext_resource type="Texture2D" uid="uid://dxur4lgmbx841" path="res://Assets/Images/buttons/duplicate.png" id="6_0drnq"]
+[ext_resource type="Texture2D" uid="uid://saw5hb7si61i" path="res://Assets/Images/buttons/duplicate_clicked.png" id="7_tyd6e"]
+[ext_resource type="Texture2D" uid="uid://b3fv0e88shfne" path="res://Assets/Images/buttons/duplicate_hover.png" id="8_ei5lw"]
+[ext_resource type="Texture2D" uid="uid://bihik3ve37qca" path="res://Assets/Images/buttons/delete.png" id="9_8y46c"]
+[ext_resource type="Texture2D" uid="uid://1ylm8qv4aqjr" path="res://Assets/Images/buttons/delete_clicked.png" id="10_74rm1"]
+[ext_resource type="Texture2D" uid="uid://c3h086pv2n0fu" path="res://Assets/Images/buttons/delete_hover.png" id="11_g28dj"]
+[ext_resource type="Texture2D" uid="uid://d052cw8hqpfxn" path="res://Assets/Images/buttons/moveup.png" id="12_qrpje"]
+[ext_resource type="Texture2D" uid="uid://dtm5nlcs31m3b" path="res://Assets/Images/buttons/moveup_clicked.png" id="13_0xr64"]
+[ext_resource type="Texture2D" uid="uid://bnvfhpdn5ckl2" path="res://Assets/Images/buttons/moveup_hover.png" id="14_3ijj3"]
+[ext_resource type="Texture2D" uid="uid://fvrblieldcxa" path="res://Assets/Images/buttons/movedn.png" id="15_6pgi8"]
+[ext_resource type="Texture2D" uid="uid://c83tw11uchhpk" path="res://Assets/Images/buttons/movedn_clicked.png" id="16_imiv1"]
+[ext_resource type="Texture2D" uid="uid://dl6xl3qxp6jbw" path="res://Assets/Images/buttons/movedn_hover.png" id="17_1plov"]
+
+[node name="LevelSelFrame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 250.0
+script = ExtResource("1_d8tdi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.243137, 0.321569, 1)
+
+[node name="LevelDisplay" parent="." instance=ExtResource("1_v42sm")]
+layout_mode = 1
+anchor_left = 0.437
+anchor_top = 0.1
+anchor_right = 0.937
+anchor_bottom = 0.9
+offset_left = -18.5
+offset_top = 0.0
+offset_right = -68.5
+offset_bottom = -1.52588e-05
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 150.0
+offset_bottom = 75.0
+bbcode_enabled = true
+text = "[center]LevelName"
+
+[node name="Type" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 59.0
+offset_right = 80.0
+offset_bottom = 89.0
+bbcode_enabled = true
+text = "Type:"
+
+[node name="TypeInput" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 59.0
+offset_right = 169.0
+offset_bottom = 98.0
+text = "Standard"
+
+[node name="Use" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 197.0
+offset_right = 62.0
+offset_bottom = 229.0
+texture_normal = ExtResource("3_jg3ae")
+texture_pressed = ExtResource("4_gsb68")
+texture_hover = ExtResource("5_t6hri")
+
+[node name="Duplicate" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 197.0
+offset_right = 110.0
+offset_bottom = 229.0
+texture_normal = ExtResource("6_0drnq")
+texture_pressed = ExtResource("7_tyd6e")
+texture_hover = ExtResource("8_ei5lw")
+
+[node name="Delete" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 197.0
+offset_right = 158.0
+offset_bottom = 229.0
+texture_normal = ExtResource("9_8y46c")
+texture_pressed = ExtResource("10_74rm1")
+texture_hover = ExtResource("11_g28dj")
+
+[node name="MoveUp" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 52.0
+offset_right = 473.0
+offset_bottom = 84.0
+texture_normal = ExtResource("12_qrpje")
+texture_pressed = ExtResource("13_0xr64")
+texture_hover = ExtResource("14_3ijj3")
+
+[node name="MoveDown" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 145.0
+offset_right = 473.0
+offset_bottom = 177.0
+texture_normal = ExtResource("15_6pgi8")
+texture_pressed = ExtResource("16_imiv1")
+texture_hover = ExtResource("17_1plov")
+
+[connection signal="pressed" from="Use" to="." method="passMove"]
+[connection signal="pressed" from="Duplicate" to="." method="passCopy"]
+[connection signal="pressed" from="Delete" to="." method="passDelete"]
+[connection signal="pressed" from="MoveUp" to="." method="passMoveUp"]
+[connection signal="pressed" from="MoveDown" to="." method="passMoveDn"]

@@ -1,0 +1,238 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg7kaibc4u4kj"]
+
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_ac4e0"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/level_player.gd" id="1_tjmos"]
+[ext_resource type="PackedScene" uid="uid://l0e85mf5or8e" path="res://Scenes/util/OnscreenController/onscreen_controller.tscn" id="3_5klic"]
+[ext_resource type="Script" path="res://Scripts/util/screen_adjusted.gd" id="3_qjyhk"]
+
+[node name="LevelPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjmos")
+
+[node name="Horizontal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelDisplayDock" type="Control" parent="Horizontal"]
+layout_mode = 1
+anchor_left = 0.219
+anchor_right = 0.781
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_right = 0.400024
+
+[node name="LevelDisplay" parent="Horizontal/LevelDisplayDock" instance=ExtResource("1_ac4e0")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.975975, 1)
+
+[node name="Menu" type="Control" parent="Horizontal"]
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 500.0
+scale = Vector2(1.11222, 1.11222)
+script = ExtResource("3_qjyhk")
+
+[node name="EditButton" type="Button" parent="Horizontal/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EditButton2" type="Button" parent="Horizontal/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 110.0
+offset_right = -10.0
+offset_bottom = 90.0
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EditButton3" type="Button" parent="Horizontal/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 210.0
+offset_right = -10.0
+offset_bottom = 190.0
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EditButton4" type="Button" parent="Horizontal/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 310.0
+offset_right = -10.0
+offset_bottom = 290.0
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EditButton5" type="Button" parent="Horizontal/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 410.0
+offset_right = -10.0
+offset_bottom = 390.0
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Horizontal"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 350.0
+offset_bottom = 400.0
+grow_vertical = 0
+scale = Vector2(1.11222, 1.11222)
+script = ExtResource("3_qjyhk")
+
+[node name="Controller" parent="Horizontal/Control" instance=ExtResource("3_5klic")]
+layout_mode = 1
+anchor_left = 0.174682
+anchor_top = -0.640609
+anchor_right = 0.745682
+anchor_bottom = -0.140609
+offset_right = 0.149979
+offset_bottom = 0.0
+
+[node name="Vertical" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelDisplayDock" type="Control" parent="Vertical"]
+layout_mode = 1
+anchor_top = 0.167
+anchor_right = 1.0
+anchor_bottom = 0.833
+offset_top = -0.300003
+offset_bottom = 0.299927
+
+[node name="Menu" type="Control" parent="Vertical"]
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 500.0
+scale = Vector2(1.11222, 1.11222)
+script = ExtResource("3_qjyhk")
+
+[node name="EditButton" type="Button" parent="Vertical/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833
+anchor_bottom = 0.2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -9.90002
+offset_bottom = -10.0
+text = "Edit"
+
+[node name="EditButton2" type="Button" parent="Vertical/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833
+anchor_bottom = 0.2
+offset_left = 260.0
+offset_top = 10.0
+offset_right = 240.1
+offset_bottom = -10.0
+text = "Edit"
+
+[node name="EditButton3" type="Button" parent="Vertical/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833
+anchor_bottom = 0.2
+offset_left = 510.0
+offset_top = 10.0
+offset_right = 490.1
+offset_bottom = -10.0
+text = "Edit"
+
+[node name="EditButton4" type="Button" parent="Vertical/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833
+anchor_bottom = 0.2
+offset_left = 760.0
+offset_top = 10.0
+offset_right = 740.1
+offset_bottom = -10.0
+text = "Edit"
+
+[node name="EditButton5" type="Button" parent="Vertical/Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833
+anchor_bottom = 0.2
+offset_left = 1010.0
+offset_top = 10.0
+offset_right = 990.1
+offset_bottom = -10.0
+text = "Edit"
+
+[node name="Control" type="Control" parent="Vertical"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 101.0
+offset_right = 350.0
+offset_bottom = 501.0
+grow_vertical = 0
+scale = Vector2(1.11222, 1.11222)
+script = ExtResource("3_qjyhk")
+
+[node name="Controller" parent="Vertical/Control" instance=ExtResource("3_5klic")]
+layout_mode = 1
+anchor_left = 0.174682
+anchor_top = -0.640609
+anchor_right = 0.745682
+anchor_bottom = -0.140609
+offset_right = 0.149979
+offset_bottom = 0.0
+
+[connection signal="stoppedMoving" from="Horizontal/LevelDisplayDock/LevelDisplay" to="." method="finalize_step"]
+[connection signal="ControlSignal" from="Horizontal/Control/Controller" to="." method="accept_input"]
+[connection signal="ControlSignal" from="Vertical/Control/Controller" to="." method="accept_input"]
