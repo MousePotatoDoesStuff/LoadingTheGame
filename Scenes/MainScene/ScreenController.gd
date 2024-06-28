@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 @onready var main_menu=$MainMenu
 @onready var level_player=$LevelPlayer
 @onready var level_editor=$MainMenu # TODO
@@ -19,11 +19,13 @@ extends Control
 	[ENUMS.screenum.INTRO,intro_scene],
 	[ENUMS.screenum.MANAGER,levelset_manager]
 ]
-@onready var screen_node={}
+var screen_node={}
+var autoplay={}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	autoplay[ENUMS.screenum.MAIN]="macleod1"
 	for E in screen_list:
 		screen_node[E[0]]=E[1]
 	for el in self.screen_node.values():
@@ -47,6 +49,9 @@ func set_screen(new_screen=ENUMS.screenum.LAST,stackUp:bool=false):
 		remove_child(curnode)
 	self.current=new_screen
 	add_child(self.screen_node[self.current])
+	if new_screen in autoplay:
+		var audio = autoplay[new_screen]
+		IP_send_signal.emit({"audio":"audio play %s %s" % ["music",audio]})
 
 func set_screen_by_index(new_screen_index:int,stackUp:bool=false):
 	var screenvar = ENUMS.screenum.LAST if new_screen_index==-1 else screen_list[new_screen_index][0]
