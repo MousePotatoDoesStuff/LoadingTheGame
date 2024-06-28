@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://caybilu3wa5iy"]
+[gd_scene load_steps=21 format=3 uid="uid://caybilu3wa5iy"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelector/level_sel_frame.gd" id="1_d8tdi"]
 [ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_v42sm"]
+[ext_resource type="Texture2D" uid="uid://bv56b825twsh0" path="res://Assets/Images/buttons/edit.png" id="3_d60yb"]
 [ext_resource type="Texture2D" uid="uid://drabhig4oebcf" path="res://Assets/Images/buttons/copy.png" id="3_jg3ae"]
+[ext_resource type="Texture2D" uid="uid://bg7gk76wtrirp" path="res://Assets/Images/buttons/edit_clicked.png" id="4_8tepy"]
 [ext_resource type="Texture2D" uid="uid://cuq473ju0hxo1" path="res://Assets/Images/buttons/copy_clicked.png" id="4_gsb68"]
+[ext_resource type="Texture2D" uid="uid://exjb2swig7t6" path="res://Assets/Images/buttons/edit_hover.png" id="5_5650h"]
 [ext_resource type="Texture2D" uid="uid://cj3slcyhcowip" path="res://Assets/Images/buttons/copy_hover.png" id="5_t6hri"]
 [ext_resource type="Texture2D" uid="uid://dxur4lgmbx841" path="res://Assets/Images/buttons/duplicate.png" id="6_0drnq"]
 [ext_resource type="Texture2D" uid="uid://saw5hb7si61i" path="res://Assets/Images/buttons/duplicate_clicked.png" id="7_tyd6e"]
@@ -71,58 +74,68 @@ offset_right = 169.0
 offset_bottom = 98.0
 text = "Standard"
 
-[node name="Use" type="TextureButton" parent="."]
+[node name="Edit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 197.0
-offset_right = 62.0
-offset_bottom = 229.0
-texture_normal = ExtResource("3_jg3ae")
-texture_pressed = ExtResource("4_gsb68")
-texture_hover = ExtResource("5_t6hri")
+offset_left = 25.0
+offset_top = 200.0
+offset_right = 73.0
+offset_bottom = 232.0
+texture_normal = ExtResource("3_d60yb")
+texture_pressed = ExtResource("4_8tepy")
+texture_hover = ExtResource("5_5650h")
 
 [node name="Duplicate" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 197.0
-offset_right = 110.0
-offset_bottom = 229.0
+offset_left = 75.0
+offset_top = 200.0
+offset_right = 123.0
+offset_bottom = 232.0
 texture_normal = ExtResource("6_0drnq")
 texture_pressed = ExtResource("7_tyd6e")
 texture_hover = ExtResource("8_ei5lw")
 
 [node name="Delete" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 197.0
-offset_right = 158.0
-offset_bottom = 229.0
+offset_left = 125.0
+offset_top = 200.0
+offset_right = 173.0
+offset_bottom = 232.0
 texture_normal = ExtResource("9_8y46c")
 texture_pressed = ExtResource("10_74rm1")
 texture_hover = ExtResource("11_g28dj")
 
 [node name="MoveUp" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 425.0
-offset_top = 52.0
-offset_right = 473.0
-offset_bottom = 84.0
+offset_left = 424.0
+offset_top = 30.0
+offset_right = 472.0
+offset_bottom = 62.0
 texture_normal = ExtResource("12_qrpje")
 texture_pressed = ExtResource("13_0xr64")
 texture_hover = ExtResource("14_3ijj3")
 
+[node name="Use" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 105.0
+offset_right = 472.0
+offset_bottom = 137.0
+texture_normal = ExtResource("3_jg3ae")
+texture_pressed = ExtResource("4_gsb68")
+texture_hover = ExtResource("5_t6hri")
+
 [node name="MoveDown" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 425.0
-offset_top = 145.0
-offset_right = 473.0
-offset_bottom = 177.0
+offset_left = 424.0
+offset_top = 180.0
+offset_right = 472.0
+offset_bottom = 212.0
 texture_normal = ExtResource("15_6pgi8")
 texture_pressed = ExtResource("16_imiv1")
 texture_hover = ExtResource("17_1plov")
 
-[connection signal="pressed" from="Use" to="." method="passMove"]
 [connection signal="pressed" from="Duplicate" to="." method="passCopy"]
 [connection signal="pressed" from="Delete" to="." method="passDelete"]
 [connection signal="pressed" from="MoveUp" to="." method="passMoveUp"]
+[connection signal="pressed" from="Use" to="." method="passMove"]
 [connection signal="pressed" from="MoveDown" to="." method="passMoveDn"]
