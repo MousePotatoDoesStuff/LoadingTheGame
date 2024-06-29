@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1l53wagtm8ep"]
+
+[ext_resource type="Script" path="res://Scenes/MainScene/MainScene.gd" id="1_wpvbo"]
+[ext_resource type="Script" path="res://Scenes/MainScene/ScreenController.gd" id="2_3blif"]
+[ext_resource type="PackedScene" uid="uid://dg7kaibc4u4kj" path="res://Scenes/LevelScenes/level_player.tscn" id="3_h1vkt"]
+[ext_resource type="PackedScene" uid="uid://dvsyu1vcuebg2" path="res://Scenes/MainScene/main_menu.tscn" id="3_qvptx"]
+[ext_resource type="PackedScene" uid="uid://cuigedhtp0l70" path="res://Scenes/options_scene.tscn" id="4_ejqu3"]
+[ext_resource type="PackedScene" uid="uid://cmxwko0uy1gg" path="res://Scenes/LevelSelector/level_selector.tscn" id="5_eo1sp"]
+[ext_resource type="PackedScene" uid="uid://47oenbci4as6" path="res://Scenes/SequenceEditor/level_sequence_editor.tscn" id="7_a1cum"]
+[ext_resource type="PackedScene" uid="uid://e83raqygpblo" path="res://Scenes/util/AudioController/audio_controller.tscn" id="8_b3cgm"]
+[ext_resource type="PackedScene" uid="uid://8lvldb7c57cl" path="res://Scenes/LevelSelector/level_raw_editor.tscn" id="9_u8ca7"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wpvbo")
+
+[node name="AudioController" parent="." instance=ExtResource("8_b3cgm")]
+
+[node name="ScreenController" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_3blif")
+
+[node name="MainMenu" parent="ScreenController" instance=ExtResource("3_qvptx")]
+visible = false
+
+[node name="LevelPlayer" parent="ScreenController" instance=ExtResource("3_h1vkt")]
+visible = false
+layout_mode = 1
+
+[node name="LevelSelector" parent="ScreenController" instance=ExtResource("5_eo1sp")]
+visible = false
+layout_mode = 1
+
+[node name="Settings" parent="ScreenController" instance=ExtResource("4_ejqu3")]
+visible = false
+layout_mode = 1
+
+[node name="LevelSequenceEditor" parent="ScreenController" instance=ExtResource("7_a1cum")]
+visible = false
+
+[node name="Level Raw Editor" parent="ScreenController" instance=ExtResource("9_u8ca7")]
+visible = false
+layout_mode = 1
+
+[connection signal="IP_send_signal" from="ScreenController" to="AudioController" method="get_input_pass"]
+[connection signal="other_signal" from="ScreenController/MainMenu" to="ScreenController" method="set_screen_by_index" binds= [true]]
+[connection signal="startgamesignal" from="ScreenController/MainMenu" to="." method="on_level_select"]
+[connection signal="IP_send_signal" from="ScreenController/LevelPlayer" to="AudioController" method="get_input_pass"]
+[connection signal="command_signal" from="ScreenController/LevelPlayer" to="." method="menuhandler_levelplayer"]
+[connection signal="backSignal" from="ScreenController/LevelSelector" to="ScreenController" method="last_screen"]
+[connection signal="returntomenu" from="ScreenController/Settings" to="ScreenController" method="last_screen"]
+[connection signal="toMenu" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="last_screen"]

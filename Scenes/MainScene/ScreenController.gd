@@ -60,3 +60,9 @@ func set_screen_by_index(new_screen_index:int,stackUp:bool=false):
 
 func last_screen():
 	set_screen()
+
+func edit_level(level:Save, israw:bool=true):
+	var screenname=[ENUMS.screenum.EDITOR,ENUMS.screenum.RAWEDITOR][int(israw)]
+	var screen=screen_node[screenname]
+	screen.load_level(level)
+	set_screen(screenname,true)

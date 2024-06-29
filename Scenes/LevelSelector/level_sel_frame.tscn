@@ -126,6 +126,7 @@ texture_normal = ExtResource("15_6pgi8")
 texture_pressed = ExtResource("16_imiv1")
 texture_hover = ExtResource("17_1plov")
 
+[connection signal="pressed" from="Edit" to="." method="passEdit"]
 [connection signal="pressed" from="Duplicate" to="." method="passCopy"]
 [connection signal="pressed" from="Delete" to="." method="passDelete"]
 [connection signal="pressed" from="MoveUp" to="." method="passMoveUp"]

@@ -1,6 +1,7 @@
 extends Control
 
 signal toMenu()
+signal editLevelSignal(level:Save, israw:int)
 
 @onready var LSN=$LevelSet_List
 var levelsets=null
@@ -38,3 +39,6 @@ func load_to_clipboard(level:Save):
 
 func save_from_clipboard(level:Save):
 	$CurLevelSet.insertElement(level)
+
+func pass_edit(level:Save, israw:bool=true):
+	editLevelSignal.emit(level, israw)

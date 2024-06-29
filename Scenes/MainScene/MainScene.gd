@@ -163,6 +163,7 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	self.level_selector.set_levels(current_levelset,
 			get_save_data(["levelsets_progress","Base Levels","solved"],0))
 
+
 # ------------------------------------------------------------------------------------------------ #
 # Menu return handlers
 # ------------------------------------------------------------------------------------------------ #
