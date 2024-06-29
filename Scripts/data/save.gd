@@ -69,6 +69,8 @@ func get_layout_as_array(is_bar_layout):
 		res.append(e.split("/"))
 	return res
 func get_playheads():
+	if len(playheads)<2:
+		return []
 	return playheads.split(",")
 func set_playheads(playheads_A: Array[String]):
 	self.playheads=",".join(playheads_A)
