@@ -7,6 +7,7 @@ enum screenum{
 	MAIN,
 	PLAYER,
 	EDITOR,
+	RAWEDITOR,
 	SELECTOR,
 	INTRO,
 	SETTINGS,

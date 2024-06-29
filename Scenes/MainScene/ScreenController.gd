@@ -14,6 +14,7 @@ extends InputPasser
 	[ENUMS.screenum.MAIN,main_menu],
 	[ENUMS.screenum.PLAYER,level_player],
 	[ENUMS.screenum.EDITOR,level_editor],
+	[ENUMS.screenum.RAWEDITOR,level_editor],
 	[ENUMS.screenum.SELECTOR,level_selector],
 	[ENUMS.screenum.SETTINGS,options_scene],
 	[ENUMS.screenum.INTRO,intro_scene],

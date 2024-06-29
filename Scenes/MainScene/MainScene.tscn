@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1l53wagtm8ep"]
+[gd_scene load_steps=10 format=3 uid="uid://b1l53wagtm8ep"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene/MainScene.gd" id="1_wpvbo"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ScreenController.gd" id="2_3blif"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmxwko0uy1gg" path="res://Scenes/LevelSelector/level_selector.tscn" id="5_eo1sp"]
 [ext_resource type="PackedScene" uid="uid://47oenbci4as6" path="res://Scenes/SequenceEditor/level_sequence_editor.tscn" id="7_a1cum"]
 [ext_resource type="PackedScene" uid="uid://e83raqygpblo" path="res://Scenes/util/AudioController/audio_controller.tscn" id="8_b3cgm"]
+[ext_resource type="PackedScene" uid="uid://8lvldb7c57cl" path="res://Scenes/LevelSelector/level_raw_editor.tscn" id="9_u8ca7"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -46,6 +47,10 @@ layout_mode = 1
 
 [node name="LevelSequenceEditor" parent="ScreenController" instance=ExtResource("7_a1cum")]
 visible = false
+
+[node name="Level Raw Editor" parent="ScreenController" instance=ExtResource("9_u8ca7")]
+visible = false
+layout_mode = 1
 
 [connection signal="IP_send_signal" from="ScreenController" to="AudioController" method="get_input_pass"]
 [connection signal="other_signal" from="ScreenController/MainMenu" to="ScreenController" method="set_screen_by_index" binds= [true]]

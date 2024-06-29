@@ -66,6 +66,12 @@ func add_element(in_el:Save,in_dex:int=-1):
 	in_el.set_id(next_index)
 	next_index+=1
 
+func set_element(in_el:Save,in_dex:int=-1):
+	in_dex%=len(saves)
+	saves[in_dex]=in_el
+	in_el.set_id(in_dex)
+	next_index+=1
+
 func remove_element(in_dex:int=-1):
 	if in_dex==-1 or in_dex>=len(saves):
 		saves.pop_back()
