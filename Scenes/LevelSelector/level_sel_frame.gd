@@ -16,15 +16,10 @@ func _ready():
 		"",
 		"AI////AI/\n/",
 		"////DE/\n///",
-		"AA/0,CC/1"
+		""
 	)
 	load_level(defaultLevelSave)
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func load_level(_level:Save):
 	level=_level
