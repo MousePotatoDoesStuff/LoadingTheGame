@@ -53,12 +53,10 @@ visible = false
 layout_mode = 1
 
 [connection signal="IP_send_signal" from="ScreenController" to="AudioController" method="get_input_pass"]
-[connection signal="other_signal" from="ScreenController/MainMenu" to="ScreenController" method="from_main"]
-[connection signal="quit_signal" from="ScreenController/MainMenu" to="." method="exit_game" binds= [0]]
+[connection signal="other_signal" from="ScreenController/MainMenu" to="ScreenController" method="set_screen_by_index" binds= [true]]
 [connection signal="startgamesignal" from="ScreenController/MainMenu" to="." method="on_level_select"]
 [connection signal="IP_send_signal" from="ScreenController/LevelPlayer" to="AudioController" method="get_input_pass"]
 [connection signal="command_signal" from="ScreenController/LevelPlayer" to="." method="menuhandler_levelplayer"]
 [connection signal="backSignal" from="ScreenController/LevelSelector" to="ScreenController" method="last_screen"]
 [connection signal="returntomenu" from="ScreenController/Settings" to="ScreenController" method="last_screen"]
-[connection signal="editLevelSignal" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="set_screen"]
 [connection signal="toMenu" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="last_screen"]

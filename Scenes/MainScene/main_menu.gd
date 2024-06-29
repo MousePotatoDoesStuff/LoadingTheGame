@@ -1,6 +1,7 @@
 extends Control
 signal startgamesignal(level,mode)
 signal other_signal(screen:int)
+signal quit_signal()
 signal settings
 @onready var playbutton=$ScreenAdjuster/PlayButton
 @onready var loadbutton=$ScreenAdjuster/LoadButton
@@ -24,13 +25,13 @@ func startgame():
 	startgamesignal.emit(-1,0)
 
 func selectlevel():
-	other_signal.emit(3)
+	other_signal.emit(0)
 
 func lgs():
-	other_signal.emit(6)
+	other_signal.emit(1)
 
 func options():
-	other_signal.emit(4)
+	other_signal.emit(2)
 
 func exit():
-	get_tree().quit()
+	quit_signal.emit()

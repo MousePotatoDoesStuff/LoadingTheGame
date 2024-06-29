@@ -1,7 +1,8 @@
 extends InputPasser
 @onready var main_menu=$MainMenu
 @onready var level_player=$LevelPlayer
-@onready var level_editor=$MainMenu # TODO
+@onready var raw_level_editor=$"Level Raw Editor"
+@onready var level_editor=$Settings
 @onready var level_selector=$LevelSelector
 @onready var levelset_manager=$LevelSequenceEditor
 @onready var intro_scene=$MainMenu
@@ -14,7 +15,7 @@ extends InputPasser
 	[ENUMS.screenum.MAIN,main_menu],
 	[ENUMS.screenum.PLAYER,level_player],
 	[ENUMS.screenum.EDITOR,level_editor],
-	[ENUMS.screenum.RAWEDITOR,level_editor],
+	[ENUMS.screenum.RAWEDITOR,raw_level_editor],
 	[ENUMS.screenum.SELECTOR,level_selector],
 	[ENUMS.screenum.SETTINGS,options_scene],
 	[ENUMS.screenum.INTRO,intro_scene],
@@ -66,3 +67,12 @@ func edit_level(level:Save, israw:bool=true):
 	var screen=screen_node[screenname]
 	screen.load_level(level)
 	set_screen(screenname,true)
+
+
+func from_main(screenID:int):
+	var chosen=[
+		ENUMS.screenum.SELECTOR,
+		ENUMS.screenum.MANAGER,
+		ENUMS.screenum.SETTINGS
+	][screenID]
+	set_screen(chosen,true)

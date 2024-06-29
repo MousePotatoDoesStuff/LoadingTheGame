@@ -1,7 +1,7 @@
 extends Control
 
 signal toMenu()
-signal editLevelSignal(level:Save, israw:int)
+signal editLevelSignal(level:Save, israw:bool)
 
 @onready var LSN=$LevelSet_List
 var levelsets=null
