@@ -66,14 +66,6 @@ offset_bottom = 89.0
 bbcode_enabled = true
 text = "Type:"
 
-[node name="TypeInput" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 59.0
-offset_right = 169.0
-offset_bottom = 98.0
-text = "Standard"
-
 [node name="Edit" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 25.0
