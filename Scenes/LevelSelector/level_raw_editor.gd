@@ -1,5 +1,7 @@
 extends Control
 
+signal save_level_signal(level: Save)
+signal exit_signal()
 var level:Save=null
 
 func _ready():
@@ -29,7 +31,7 @@ func load_level(_level:Save):
 	$TextWindow/LevelData.text=level.get_full_layout()
 
 func display_error(text:String,color:Color=Color.RED):
-	$TextWindow/ColorRect/ErrorText.text=""
+	$TextWindow/ColorRect/ErrorText.clear()
 	$TextWindow/ColorRect/ErrorText.push_color(color)
 	$TextWindow/ColorRect/ErrorText.add_text(text)
 
@@ -38,12 +40,21 @@ func save_level():
 	var error=jsvar.parse($TextWindow/LevelData.text)
 	if error!=OK:
 		print(error)
-		display_error(error)
+		display_error("JSON error "+str(error))
 		return
 	var rawdict=jsvar.data
 	if typeof(rawdict) != TYPE_DICTIONARY:
+		display_error(error)
 		print("Cannot initiate with non-dictionary output!")
 		return
-	level.initDict(rawdict)
+	level=Save.initDict(rawdict)
 	display_error("Level saved",Color.GREEN)
+	save_level_signal.emit(level)
 	return
+
+func exit():
+	exit_signal.emit()
+
+func save_and_exit():
+	save_level()
+	exit()

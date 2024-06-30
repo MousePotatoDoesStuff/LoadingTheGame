@@ -5,13 +5,15 @@ signal editLevelSignal(level:Save, israw:bool)
 
 @onready var LSN=$LevelSet_List
 var levelsets=null
+var curIsClipboard=false
+var curIndex=-1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var SGraw='''[{"name":"Empty"},[]]'''
-	var SG=SaveGroup.fromString(SGraw)
-	$ClipboardSet.arrange_elements(SG)
-	pass # Replace with function body.
+	if levelsets == null:
+		var SGraw='''[{"name":"Empty"},[]]'''
+		var SG=SaveGroup.fromString(SGraw)
+		$ClipboardSet.arrange_elements(SG)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,5 +42,18 @@ func load_to_clipboard(level:Save):
 func save_from_clipboard(level:Save):
 	$CurLevelSet.insertElement(level)
 
-func pass_edit(level:Save, israw:bool=true):
+func update_display():
+	$ClipboardSet.arrange_elements()
+	$CurLevelSet.arrange_elements()
+	
+
+func pass_edit(level:Save, is_clipboard:bool, israw:bool=true):
+	curIsClipboard=is_clipboard
+	curIndex=level.get_id()
 	editLevelSignal.emit(level, israw)
+
+func save_edit(level:Save):
+	if curIndex==-1:
+		return
+	var cur = $ClipboardSet if curIsClipboard else $CurLevelSet
+	cur.setElementCovertly(level,curIndex)

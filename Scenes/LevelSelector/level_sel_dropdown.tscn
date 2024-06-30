@@ -9,6 +9,8 @@ anchors_preset = 0
 offset_right = 550.0
 offset_bottom = 900.0
 script = ExtResource("1_7cyp4")
+elementSize = null
+elementOffset = null
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(550, 750)

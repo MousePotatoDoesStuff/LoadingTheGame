@@ -60,5 +60,7 @@ layout_mode = 1
 [connection signal="command_signal" from="ScreenController/LevelPlayer" to="." method="menuhandler_levelplayer"]
 [connection signal="backSignal" from="ScreenController/LevelSelector" to="ScreenController" method="last_screen"]
 [connection signal="returntomenu" from="ScreenController/Settings" to="ScreenController" method="last_screen"]
-[connection signal="editLevelSignal" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="set_screen"]
+[connection signal="editLevelSignal" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="edit_level"]
 [connection signal="toMenu" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="last_screen"]
+[connection signal="exit_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="last_screen"]
+[connection signal="save_level_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="edit_level_save"]

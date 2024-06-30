@@ -68,6 +68,12 @@ func edit_level(level:Save, israw:bool=true):
 	screen.load_level(level)
 	set_screen(screenname,true)
 
+func edit_level_save(level:Save):
+	if current!=ENUMS.screenum.MANAGER:
+		levelset_manager.save_edit(level)
+		levelset_manager.update_display()
+		return
+	assert(false)
 
 func from_main(screenID:int):
 	var chosen=[

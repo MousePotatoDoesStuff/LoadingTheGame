@@ -6,13 +6,15 @@ signal editSignal(level:Save)
 @export var elementOffset:float=250
 @onready var ctrl=$ScrollContainer/DropdownControl
 var lv_template=preload("res://Scenes/LevelSelector/level_sel_frame.tscn")
-var levelset:SaveGroup
+var levelset:SaveGroup = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var SG=SaveGroup.fromString("")
-	arrange_elements(SG)
-	pass # Replace with function body.
+	if levelset == null:
+		var SG=SaveGroup.fromString("")
+		arrange_elements(SG)
+	else:
+		arrange_elements(levelset)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +65,14 @@ func getFirstVisibleIndex():
 
 func addElement(element:Save,index:int=-1, existingElement=null):
 	levelset.add_element(element,index)
+	arrange_elements()
+
+func setElementCovertly(element:Save,index:int=-1, existingElement=null):
+	print(level.get_full_layout())
+	levelset.set_element(element,index)
+
+func setElement(element:Save,index:int=-1, existingElement=null):
+	levelset.set_element(element,index)
 	arrange_elements()
 
 func insertElement(element):

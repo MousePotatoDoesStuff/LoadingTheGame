@@ -112,3 +112,7 @@ offset_left = 113.2
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
+
+[connection signal="pressed" from="TextWindow/Save" to="." method="save_level"]
+[connection signal="pressed" from="TextWindow/SaveAndExit" to="." method="save_and_exit"]
+[connection signal="pressed" from="TextWindow/Exit" to="." method="exit"]
