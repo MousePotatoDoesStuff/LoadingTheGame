@@ -68,7 +68,7 @@ func addElement(element:Save,index:int=-1, existingElement=null):
 	arrange_elements()
 
 func setElementCovertly(element:Save,index:int=-1, existingElement=null):
-	print(level.get_full_layout())
+	print(element.get_full_layout())
 	levelset.set_element(element,index)
 
 func setElement(element:Save,index:int=-1, existingElement=null):

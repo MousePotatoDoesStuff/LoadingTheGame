@@ -50,7 +50,10 @@ func set_screen(new_screen=ENUMS.screenum.LAST,stackUp:bool=false):
 	if curnode.get_parent() != null:
 		remove_child(curnode)
 	self.current=new_screen
-	add_child(self.screen_node[self.current])
+	curnode=self.screen_node[self.current]
+	add_child(curnode)
+	if curnode.has_method("update_display"):
+		curnode.update_display()
 	if new_screen in autoplay:
 		var audio = autoplay[new_screen]
 		IP_send_signal.emit({"audio":"audio play %s %s" % ["music",audio]})
@@ -71,7 +74,6 @@ func edit_level(level:Save, israw:bool=true):
 func edit_level_save(level:Save):
 	if current!=ENUMS.screenum.MANAGER:
 		levelset_manager.save_edit(level)
-		levelset_manager.update_display()
 		return
 	assert(false)
 
