@@ -161,8 +161,7 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
 
 func get_levelsets():
-	var b=get_save_data(["levelsets_progress","Base Levels","solved"],0)
-	return levelsets,b
+	return levelsets
 
 # ------------------------------------------------------------------------------------------------ #
 # Menu return handlers
