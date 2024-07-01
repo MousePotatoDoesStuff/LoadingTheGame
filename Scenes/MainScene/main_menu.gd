@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 signal startgamesignal(level,mode)
 signal other_signal(screen:int)
 signal quit_signal()

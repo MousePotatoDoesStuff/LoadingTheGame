@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 
 signal save_level_signal(level: Save)
 signal exit_signal()

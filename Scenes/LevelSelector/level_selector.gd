@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 
 @export var mode=0
 signal SelectLevel(level,mode)
@@ -18,6 +18,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+func on_show(data:Dictionary):
+	var levelsets=data["levelsets"]
+	set_levelsets(levelsets,0)
 	pass
 
 func back():

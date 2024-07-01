@@ -72,6 +72,9 @@ func edit_level(level:Save, israw:bool=true):
 	set_screen(screenname,true)
 
 func select_level():
+	
+	set_levels(current_levelset,
+			get_save_data(["levelsets_progress","Base Levels","solved"],0))
 	return
 
 func edit_level_save(level:Save):

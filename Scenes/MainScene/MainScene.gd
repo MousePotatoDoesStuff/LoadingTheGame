@@ -12,9 +12,6 @@ var current_levelset
 func _ready():
 	load_level_group_data()
 	load_save_data()
-	'''self.levelset_manager.set_levels(current_levelset)
-	self.level_selector.set_levels(current_levelset,
-			get_save_data(["levelsets_progress","Base Levels","solved"],0))'''
 	if not self.save_data.get('opened',false):
 		default_save_data()
 	SCTRL.set_screen_by_index(ENUMS.screenum.MAIN,false)
@@ -163,6 +160,9 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 		levelset_data["solved"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
 
+func get_levelsets():
+	var b=get_save_data(["levelsets_progress","Base Levels","solved"],0)
+	return levelsets,b
 
 # ------------------------------------------------------------------------------------------------ #
 # Menu return handlers

@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 
 signal toMenu()
 signal editLevelSignal(level:Save, israw:bool)
@@ -42,7 +42,7 @@ func load_to_clipboard(level:Save):
 func save_from_clipboard(level:Save):
 	$CurLevelSet.insertElement(level)
 
-func update_display():
+func on_show(data):
 	$ClipboardSet.arrange_elements()
 	$CurLevelSet.arrange_elements()
 	

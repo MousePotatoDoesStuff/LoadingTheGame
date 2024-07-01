@@ -1,4 +1,4 @@
-extends Control
+extends InputPasser
 
 signal returntomenu
 signal ResetData

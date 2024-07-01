@@ -13,3 +13,6 @@ func IP_receive(input_data:Dictionary,args:Dictionary={}):
 	data.merge(input_data,overwrite)
 	if autoSend:
 		IP_send()
+
+func on_show(data:Dictionary):
+	print("Passed data: "+str(data))
