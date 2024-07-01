@@ -40,6 +40,7 @@ layout_mode = 1
 [node name="LevelSelector" parent="ScreenController" instance=ExtResource("5_eo1sp")]
 visible = false
 layout_mode = 1
+mode = 0
 
 [node name="Settings" parent="ScreenController" instance=ExtResource("4_ejqu3")]
 visible = false
@@ -57,9 +58,7 @@ layout_mode = 1
 [connection signal="startgamesignal" from="ScreenController/MainMenu" to="." method="on_level_select"]
 [connection signal="IP_send_signal" from="ScreenController/LevelPlayer" to="AudioController" method="get_input_pass"]
 [connection signal="command_signal" from="ScreenController/LevelPlayer" to="." method="menuhandler_levelplayer"]
-[connection signal="CheckSave" from="ScreenController/LevelSelector" to="." method="change_levelset"]
 [connection signal="backSignal" from="ScreenController/LevelSelector" to="ScreenController" method="last_screen"]
-[connection signal="on_show_signal" from="ScreenController/LevelSelector" to="." method="select_available_levels"]
 [connection signal="PassOptionsSignal" from="ScreenController/Settings" to="." method="set_save_data"]
 [connection signal="ResetData" from="ScreenController/Settings" to="." method="reset_progress"]
 [connection signal="ResetGame" from="ScreenController/Settings" to="." method="erase_save_data_and_exit"]

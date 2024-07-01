@@ -54,6 +54,7 @@ func set_screen(new_screen=ENUMS.screenum.LAST,stackUp:bool=false):
 	add_child(curnode)
 	if curnode.has_method("update_display"):
 		curnode.update_display()
+	curnode.on_show({})
 	if new_screen in autoplay:
 		var audio = autoplay[new_screen]
 		IP_send_signal.emit({"audio":"audio play %s %s" % ["music",audio]})
@@ -71,12 +72,6 @@ func edit_level(level:Save, israw:bool=true):
 	screen.load_level(level)
 	set_screen(screenname,true)
 
-func select_level():
-	
-	set_levels(current_levelset,
-			get_save_data(["levelsets_progress","Base Levels","solved"],0))
-	return
-
 func edit_level_save(level:Save):
 	if current!=ENUMS.screenum.MANAGER:
 		levelset_manager.save_edit(level)
@@ -90,3 +85,6 @@ func from_main(screenID:int):
 		ENUMS.screenum.SETTINGS
 	][screenID]
 	set_screen(chosen,true)
+
+func handle_level_selector(levelsets:Dictionary,cursetid:String=util.BASELEVELS):
+	$LevelSelector.set_levelsets(levelsets,cursetid)

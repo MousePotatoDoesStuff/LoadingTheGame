@@ -1,6 +1,7 @@
 extends Control
 class_name InputPasser
 signal IP_send_signal(data:Dictionary)
+signal on_show_signal()
 var data=Dictionary()
 
 func IP_send():
@@ -15,4 +16,4 @@ func IP_receive(input_data:Dictionary,args:Dictionary={}):
 		IP_send()
 
 func on_show(data:Dictionary):
-	print("Passed data: "+str(data))
+	on_show_signal.emit()

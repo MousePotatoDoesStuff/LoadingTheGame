@@ -59,7 +59,6 @@ layout_mode = 1
 [connection signal="command_signal" from="ScreenController/LevelPlayer" to="." method="menuhandler_levelplayer"]
 [connection signal="CheckSave" from="ScreenController/LevelSelector" to="." method="change_levelset"]
 [connection signal="backSignal" from="ScreenController/LevelSelector" to="ScreenController" method="last_screen"]
-[connection signal="on_show_signal" from="ScreenController/LevelSelector" to="." method="select_available_levels"]
 [connection signal="PassOptionsSignal" from="ScreenController/Settings" to="." method="set_save_data"]
 [connection signal="ResetData" from="ScreenController/Settings" to="." method="reset_progress"]
 [connection signal="ResetGame" from="ScreenController/Settings" to="." method="erase_save_data_and_exit"]

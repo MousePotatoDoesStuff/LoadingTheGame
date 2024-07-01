@@ -2,7 +2,6 @@ extends InputPasser
 signal startgamesignal(level,mode)
 signal other_signal(screen:int)
 signal quit_signal()
-signal settings
 @onready var playbutton=$ScreenAdjuster/PlayButton
 @onready var loadbutton=$ScreenAdjuster/LoadButton
 @onready var LGSbutton=$ScreenAdjuster/LGSButton

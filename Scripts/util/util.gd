@@ -2,6 +2,7 @@ extends Object
 class_name util
 # Turning around direction indices
 static var charcode_base=65
+static var BASELEVELS="Base Levels"
 static var directions=[Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT,Vector2i.UP]
 static var reverse_directions={
 	Vector2i.RIGHT:0,

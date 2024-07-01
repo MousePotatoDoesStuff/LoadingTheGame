@@ -4,8 +4,8 @@ extends InputPasser
 @onready var save_path="res://save.txt"
 var possible_levelsets=""
 var levelsets=Dictionary()
-var current_levelset_ID:String="Base Levels"
-var current_levelset
+var current_levelset_ID:String=util.BASELEVELS
+var current_levelset=null
 @onready var save_data=Dictionary()
 
 # Called when the node enters the scene tree for the first time.
@@ -38,9 +38,10 @@ func load_level_group_data():
 	var F=null
 	var content=""
 	var dir=DirAccess.get_files_at("res://")
-	current_levelset_ID="Base Levels"
+	current_levelset_ID=util.BASELEVELS
 	current_levelset=SaveGroup.fromString("")
 	levelsets[current_levelset_ID]=current_levelset
+	levelsets[current_levelset_ID+" 2"]=current_levelset
 	self.possible_levelsets+=""
 	for e in dir:
 		if !e.ends_with(".levelset"):
@@ -64,15 +65,15 @@ func save_save_data():
 	F.close()
 	return
 func reset_progress():
-	self.save_data["levelsets_progress"]={"Base Levels":{"solved":0}}
-	self.save_data["selected"]="Base Levels"
+	self.save_data["levelsets_progress"]={util.BASELEVELS:{"solved":0}}
+	self.save_data["selected"]=util.BASELEVELS
 	self.save_save_data()
 func default_save_data():
 	var default_status={"solved":0}
 	self.save_data={
 		"opened":false,
-		"selected":"Base Levels",
-		"levelsets_progress":{"Base Levels":default_status},
+		"selected":util.BASELEVELS,
+		"levelsets_progress":{util.BASELEVELS:default_status},
 		ENUMS.settings:{
 			"audio":{"muted":false,"volume":100},
 			"sound":{"muted":false,"volume":100},
@@ -130,7 +131,7 @@ func to_menu(_choice_index=0, stackup=true):
 	return SCTRL.switch
 
 func on_level_select(level,mode):
-	var highest=save_data["levelsets_progress"]["Base Levels"]["solved"]
+	var highest=save_data["levelsets_progress"][util.BASELEVELS]["solved"]
 	if level==-1:
 		level=highest
 	level=min(level,len(current_levelset.saves)-1)
@@ -149,7 +150,8 @@ func change_levelset(levelset_name):
 		return
 	current_levelset_ID=levelset_name
 	current_levelset=levelsets[levelset_name]
-	self.change_level_progress(levelset_name,0,false)
+	var last = self.change_level_progress(levelset_name,0,false)
+	$ScreenController/LevelSelector.set_levels(current_levelset,last)
 
 func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	var levelset_data=get_save_data(["levelsets_progress",levelset_name])
@@ -159,9 +161,10 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	if allowRegress or cur<=lastSolved:
 		levelset_data["solved"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
+	return lastSolved
 
-func get_levelsets():
-	return levelsets
+func select_available_levels():
+	$ScreenController.handle_level_selector(levelsets,current_levelset_ID)
 
 # ------------------------------------------------------------------------------------------------ #
 # Menu return handlers

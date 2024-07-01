@@ -93,3 +93,4 @@ offset_bottom = 314.8
 
 [connection signal="pressed" from="Control/ColorRect/Button" to="." method="select_level"]
 [connection signal="pressed" from="Control/ColorRect/Button2" to="." method="back"]
+[connection signal="item_selected" from="Control/ColorRect/SelectLevelset" to="." method="choose_levelset"]
