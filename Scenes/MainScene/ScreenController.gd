@@ -23,7 +23,7 @@ extends InputPasser
 ]
 var screen_node={}
 var autoplay={}
-
+var save_data=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,6 +70,9 @@ func edit_level(level:Save, israw:bool=true):
 	var screen=screen_node[screenname]
 	screen.load_level(level)
 	set_screen(screenname,true)
+
+func select_level():
+	return
 
 func edit_level_save(level:Save):
 	if current!=ENUMS.screenum.MANAGER:

@@ -84,6 +84,8 @@ stream = ExtResource("5_wtwou")
 bus = &"Sound"
 
 [connection signal="pressed" from="Control/return" to="." method="rtm"]
+[connection signal="pressed" from="Control/Reset" to="." method="confirm" binds= [0]]
+[connection signal="pressed" from="Control/HyperReset" to="." method="confirm" binds= [1]]
 [connection signal="volume_changed" from="Control/AudioControl" to="." method="PassAudio"]
 [connection signal="volume_changed" from="Control/SoundControl" to="." method="PassAudio"]
 [connection signal="volume_changed" from="Control/MusicControl" to="." method="PassAudio"]

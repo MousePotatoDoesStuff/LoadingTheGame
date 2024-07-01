@@ -68,13 +68,13 @@ func save_save_data():
 	return
 func reset_progress():
 	self.save_data["levelsets_progress"]={"Base Levels":{"solved":0}}
-	self.level_selector.set_levels(current_levelset,
-			get_save_data(["levelsets_progress","Base Levels","solved"],0))
+	self.save_data["selected"]="Base Levels"
 	self.save_save_data()
 func default_save_data():
 	var default_status={"solved":0}
 	self.save_data={
 		"opened":false,
+		"selected":"Base Levels",
 		"levelsets_progress":{"Base Levels":default_status},
 		ENUMS.settings:{
 			"audio":{"muted":false,"volume":100},
@@ -83,6 +83,7 @@ func default_save_data():
 			"devmode":false
 		}
 	}
+	$ScreenController.save_data=self.save_data
 	self.save_save_data()
 func load_save_data():
 	if not FileAccess.file_exists(save_path):
@@ -90,11 +91,12 @@ func load_save_data():
 		return
 	var F=FileAccess.open(save_path,FileAccess.READ)
 	self.save_data=JSON.parse_string(F.get_as_text())
+	$ScreenController.save_data=self.save_data
 	F.close()
 func erase_save_data_and_exit():
 	self.save_data.clear()
 	save_save_data()
-	get_tree().quit()
+	exit_game()
 func get_save_data(path,default=null):
 	var cur=self.save_data
 	for e in path:
@@ -160,8 +162,6 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	if allowRegress or cur<=lastSolved:
 		levelset_data["solved"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
-	self.level_selector.set_levels(current_levelset,
-			get_save_data(["levelsets_progress","Base Levels","solved"],0))
 
 
 # ------------------------------------------------------------------------------------------------ #
@@ -184,4 +184,5 @@ func menuhandler_levelplayer(button_ID:int):
 func exit_game(exit_mode:int=0):
 	if OS.has_feature('web'):
 		print("Cannot exit game on web browser!")
+		return
 	get_tree().quit()

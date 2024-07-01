@@ -59,7 +59,7 @@ func confirm(code):
 	CAP.prepare(text,code)
 	CAP.show()
 
-func commandConfirmed(code):
+func commandConfirmed(code:int):
 	print(code)
 	if code==0:
 		print("Resetting save data...")
