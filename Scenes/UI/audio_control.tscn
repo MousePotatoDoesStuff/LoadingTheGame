@@ -37,6 +37,7 @@ theme_override_font_sizes/font_size = 50
 text = "Mute"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
