@@ -142,7 +142,7 @@ func on_level_select(cursetid,level,mode):
 	var level_mode=[ENUMS.screenum.PLAYER,ENUMS.screenum.EDITOR][mode]
 	var level_node=SCTRL.screen_node[level_mode]
 	var save:Save=current_levelset.saves[level]
-	SCTRL.set_screen(level_mode,true)
+	SCTRL.set_screen(level_mode,false)
 	level_node.load_level(save,false,level==0,level==highest)
 
 func on_win(level):
