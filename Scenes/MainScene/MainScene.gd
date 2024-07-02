@@ -7,6 +7,7 @@ var levelsets=Dictionary()
 var current_levelset_ID:String=util.BASELEVELS
 var current_levelset=null
 @onready var save_data=Dictionary()
+@onready var autoplay=$ScreenController.autoplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -118,6 +119,9 @@ func set_save_data_custom(path,value,shift_to="value"):
 		arch[last]=cur
 	arch[last]=value
 	return cur
+
+func set_autoplay():
+	return
 
 # ------------------------------------------------------------------------------------------------ #
 # Menu swappers
