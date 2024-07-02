@@ -44,6 +44,7 @@ func load_level_group_data():
 	levelsets[current_levelset_ID]=current_levelset
 	levelsets[current_levelset_ID+" 2"]=current_levelset
 	self.possible_levelsets+=""
+	print(current_levelset._to_string())
 	for e in dir:
 		if !e.ends_with(".levelset"):
 			continue

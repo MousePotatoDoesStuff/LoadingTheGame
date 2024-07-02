@@ -3,14 +3,17 @@ extends Control
 
 var audio_dict={}
 var playing={}
+var looping={}
 var bus={}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for music in $Music.get_children():
-		audio_dict[music.name]=music
-	for music in $Sound.get_children():
-		audio_dict[music.name]=music
-	pass # Replace with function body.
+	for child in get_children():
+		for node in child.get_children():
+			if node is AudioStreamPlayer:
+				audio_dict[node.name] = node
+				var curcall=Callable(self, "checkLoop")
+				var autocall=curcall.bindv([node.name])
+				node.connect("finished", autocall)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +54,22 @@ func handle_audio(COM:Array[String]):
 		if cur==sel_audio and "force" not in COM:
 			return
 		playing[sel_bus]=sel_audio
+		var islooping=sel_bus in ['music']
+		if "loop" in COM:
+			islooping=true
+		if "noloop" in COM:
+			islooping=false
+		looping[sel_music]=islooping
 		sel_audio.play()
 	elif mode=="stop":
 		var sel_audio=playing[sel_bus]
+		looping[sel_bus]=false
 		sel_audio.stop()
+
+func checkLoop(sel_music:String):
+	if looping.get(sel_music,false):
+		var sel_audio=audio_dict[sel_music]
+		sel_audio.play()
+
+func test():
+	print("TEST")

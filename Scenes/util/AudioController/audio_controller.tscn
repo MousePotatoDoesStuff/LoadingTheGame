@@ -20,6 +20,9 @@ offset_bottom = 40.0
 stream = ExtResource("2_kij36")
 bus = &"Music"
 
+[node name="macleod_killers" type="AudioStreamPlayer" parent="Music"]
+bus = &"Music"
+
 [node name="Sound" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
