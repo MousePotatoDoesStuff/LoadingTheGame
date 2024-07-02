@@ -64,12 +64,15 @@ func handle_audio(COM:Array[String]):
 	elif mode=="stop":
 		var sel_audio=playing[sel_bus]
 		looping[sel_bus]=false
+		playing[sel_bus]=null
 		sel_audio.stop()
 
 func checkLoop(sel_music:String):
 	if looping.get(sel_music,false):
 		var sel_audio=audio_dict[sel_music]
 		sel_audio.play()
+	else:
+		playing[sel_bus]=null
 
 func test():
 	print("TEST")
