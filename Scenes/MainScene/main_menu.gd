@@ -21,7 +21,7 @@ func showLevelStatus(level_name):
 	$ScreenAdjuster/PlayButton.text="Continue\n(%s)" % level_name
 
 func startgame():
-	startgamesignal.emit(null,-1,0)
+	startgamesignal.emit(null,-1,0,true)
 
 func selectlevel():
 	other_signal.emit(0)

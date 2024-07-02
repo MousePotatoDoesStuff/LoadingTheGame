@@ -14,7 +14,7 @@ func _ready():
 	load_save_data()
 	if not self.save_data.get('opened',false):
 		default_save_data()
-	SCTRL.set_screen_by_index(ENUMS.screenum.MAIN,false)
+	SCTRL.set_screen_by_index(ENUMS.screenum.MAIN,true)
 	var audio=self.get_save_data([ENUMS.settings],Dictionary())
 	SCTRL.options_scene.set_by_settings(audio)
 
@@ -130,7 +130,7 @@ func to_menu(_choice_index=0, stackup=true):
 		self.save_save_data()
 	return SCTRL.switch
 
-func on_level_select(cursetid,level,mode):
+func on_level_select(cursetid,level,mode,stackup:bool=false):
 	if cursetid == null:
 		cursetid=current_levelset_ID
 	current_levelset_ID=cursetid
@@ -142,7 +142,7 @@ func on_level_select(cursetid,level,mode):
 	var level_mode=[ENUMS.screenum.PLAYER,ENUMS.screenum.EDITOR][mode]
 	var level_node=SCTRL.screen_node[level_mode]
 	var save:Save=current_levelset.saves[level]
-	SCTRL.set_screen(level_mode,false)
+	SCTRL.set_screen(level_mode,stackup)
 	level_node.load_level(save,false,level==0,level==highest)
 
 func on_win(level):
