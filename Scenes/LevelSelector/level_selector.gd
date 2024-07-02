@@ -62,4 +62,4 @@ func show_level(level:Save):
 
 func select_level():
 	var level=LVN.selected
-	SelectLevel.emit(level,mode)
+	SelectLevel.emit(curlsname,level,mode)

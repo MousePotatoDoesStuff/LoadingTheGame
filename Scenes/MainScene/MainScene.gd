@@ -130,8 +130,12 @@ func to_menu(_choice_index=0, stackup=true):
 		self.save_save_data()
 	return SCTRL.switch
 
-func on_level_select(level,mode):
-	var highest=save_data["levelsets_progress"][util.BASELEVELS]["solved"]
+func on_level_select(cursetid,level,mode):
+	if cursetid == null:
+		cursetid=current_levelset_ID
+	current_levelset_ID=cursetid
+	current_levelset=levelsets[cursetid]
+	var highest=save_data["levelsets_progress"][cursetid]["solved"]
 	if level==-1:
 		level=highest
 	level=min(level,len(current_levelset.saves)-1)

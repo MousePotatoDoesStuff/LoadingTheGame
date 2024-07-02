@@ -1,5 +1,5 @@
 extends InputPasser
-signal startgamesignal(level,mode)
+signal startgamesignal(levelset,level,mode)
 signal other_signal(screen:int)
 signal quit_signal()
 @onready var playbutton=$ScreenAdjuster/PlayButton
@@ -21,7 +21,7 @@ func showLevelStatus(level_name):
 	$ScreenAdjuster/PlayButton.text="Continue\n(%s)" % level_name
 
 func startgame():
-	startgamesignal.emit(-1,0)
+	startgamesignal.emit(null,-1,0)
 
 func selectlevel():
 	other_signal.emit(0)
