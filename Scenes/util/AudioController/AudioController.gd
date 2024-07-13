@@ -2,8 +2,8 @@ extends Control
 
 var AUDIOPATH="res://Assets/Audio/"
 var audio_dict={}
-var musicPlaying=null
-var bus={}
+var playing={}
+var is_looping={}
 var players={}
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +12,7 @@ func _ready():
 		'sound':$SoundPlayer
 	}
 	import_audio_files()
-	play_audio_file('blipSelect','music')
+	# get_command("audio play music blipSelect noloop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,8 +41,15 @@ func play_audio_file(file_name:String,mode:String):
 		return
 	var player=players[mode]
 	var file_path=audio_dict[file_name]
-	$MusicPlayer.stream=load(file_path)
-	$MusicPlayer.play()
+	player.stream=load(file_path)
+	player.play()
+
+func stop_audio_file(mode:String):
+	if mode not in players:
+		print('Audio mode %s invalid' % mode)
+		return
+	var player=players[mode]
+	player.stop()
 
 func get_input_pass(input:Dictionary):
 	if "audio" not in input:
@@ -61,7 +68,7 @@ func handle_audio(COM:Array[String]):
 	if audio_dict.is_empty():
 		push_error("Audio controller must be placed first!")
 	var mode=COM[1]
-	var sel_bus="master"
+	var sel_bus="audio"
 	var sel_music="None"
 	if len(COM)>2:
 		sel_bus=COM[2]
@@ -73,21 +80,29 @@ func handle_audio(COM:Array[String]):
 		print("%s audio not found in %s!" % [sel_music,audio_dict])
 		mode="stop"
 	if mode=="play":
-		var sel_audio=audio_dict[sel_music]
-		var cur=null
-		if cur==sel_audio and "force" not in COM:
+		var cur=playing.get(sel_bus,null)
+		if cur==sel_music and "force" not in COM:
 			return
 		var islooping=sel_bus in ['music']
 		if "loop" in COM:
 			islooping=true
 		if "noloop" in COM:
 			islooping=false
-		print("Play")
+		playing[sel_bus]=sel_music
+		is_looping[sel_bus]=islooping
+		play_audio_file(sel_music,sel_bus)
 	elif mode=="stop":
-		print("Stop")
+		playing[sel_bus]=null
+		is_looping[sel_bus]=false
+		stop_audio_file(sel_bus)
 
 func checkLoop(source:String):
-	pass
+	if not is_looping.get(source,false):
+		return
+	var playnow = playing.get(source, null)
+	if playnow == null:
+		return
+	play_audio_file(playnow,source)
 
 func test():
 	print("TEST")

@@ -12,3 +12,6 @@ script = ExtResource("1_mu7hh")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="MusicPlayer" to="." method="checkLoop" binds= ["music"]]
+[connection signal="finished" from="SoundPlayer" to="." method="checkLoop" binds= ["sound"]]
