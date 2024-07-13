@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://e83raqygpblo"]
+
+[ext_resource type="Script" path="res://Scenes/util/AudioController/AudioController.gd" id="1_mu7hh"]
+
+[node name="AudioController" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mu7hh")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
