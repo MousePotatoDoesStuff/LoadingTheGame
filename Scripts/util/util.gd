@@ -78,8 +78,8 @@ static func json_rearrange(D:Dictionary,order:Dictionary={}):
 	var templist=[]
 	for oID in sequence:
 		for key in tempdict[oID]:
-			var value=JSON.stringify(D[key])
-			templist.append("\t"+JSON.stringify(key)+":"+value)
+			var value=JSON.stringify(D[key], "\t")
+			templist.append("\t"+JSON.stringify(key, "\t")+":"+value)
 	var RES=",\n".join(templist)
 	return "{\n"+RES+"\n}"
 

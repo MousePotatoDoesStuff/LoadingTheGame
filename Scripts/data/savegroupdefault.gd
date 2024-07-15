@@ -2,7 +2,7 @@ extends Object
 class_name SaveGroupDefault
 
 const defaultFile='''[
-  {"name":"TEST"},
+  {"name":"TEST", "editable":true},
 [
 {
 	"name":"Untitled Level",

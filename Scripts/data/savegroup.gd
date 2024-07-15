@@ -49,15 +49,20 @@ func _to_string():
 	var L=[self.data]
 	var rawSaves=[]
 	for e in self.saves:
-		var s=JSON.stringify(e.data)
-		s+="\n"+e.get_full_layout()
-		L.append(s)
+		var savedict=e.getDict()
+		rawSaves.append(savedict)
 	L.append(rawSaves)
-	return JSON.stringify(L)
+	return JSON.stringify(L, "\t")
+func is_editable():
+	return data.get('editable',false)
 func save():
 	var F=FileAccess.open("res://"+self.name+".levelset",FileAccess.WRITE)
 	F.store_string(str(self))
 	F.close()
+
+# ---------------------------------------------------------------------------- #
+# Class changers
+# ---------------------------------------------------------------------------- #
 func add_element(in_el:Save,in_dex:int=-1):
 	if in_dex==-1 or in_dex>=len(saves):
 		in_dex=len(saves)

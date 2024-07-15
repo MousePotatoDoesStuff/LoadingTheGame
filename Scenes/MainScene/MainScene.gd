@@ -11,8 +11,8 @@ var current_levelset=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_level_group_data()
 	load_save_data()
+	load_level_group_data()
 	if not self.save_data.get('opened',false):
 		default_save_data()
 	SCTRL.set_screen_by_index(ENUMS.screenum.MAIN,true)
@@ -55,6 +55,7 @@ func load_level_group_data():
 		if newset != null:
 			self.levelsets[newset.name]=newset
 		F.close()
+	var devmode=get_save_data(["settings","devmode"],false)
 	SCTRL.levelset_manager.set_levelsets(self.levelsets)
 	return
 # ------------------------------------------------------------------------------------------------ #
@@ -63,7 +64,7 @@ func load_level_group_data():
 
 func save_save_data():
 	var F=FileAccess.open(save_path,FileAccess.WRITE)
-	F.store_string(JSON.stringify(self.save_data))
+	F.store_string(JSON.stringify(self.save_data, "\t"))
 	F.close()
 	return
 func reset_progress():

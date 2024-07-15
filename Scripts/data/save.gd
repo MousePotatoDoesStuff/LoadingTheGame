@@ -35,6 +35,12 @@ static func initRaw(raw:String)->Save:
 	var json=JSON.parse_string(raw)
 	assert(json!=null)
 	return initDict(json)
+func getDict():
+	var HSL=data.get('halfsize',[10,10])
+	data["level"]=space_layout
+	data["bar"]=bar_layout
+	data["playheads"]=playheads
+	return data
 func copy(new_id=null):
 	var newdata=Dictionary()
 	for key in self.data:

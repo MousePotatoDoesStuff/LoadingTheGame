@@ -26,13 +26,14 @@ func _process(delta):
 func toMenuFn():
 	self.toMenu.emit()
 
-func set_levelsets(LG):
+func set_levelsets(LG, devmode=false):
 	self.levelsets=LG
 	LSN.clear()
 	LSN.add_item("Select a levelset...")
 	for e in LG:
-		e:SaveGroup
-		LSN.add_item(e)
+		var v:SaveGroup=LG[e]
+		if devmode or v.is_editable():
+			LSN.add_item(e)
 
 func choose_levelset(choice_index:int):
 	if choice_index==0:
