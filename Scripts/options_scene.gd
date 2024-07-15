@@ -48,7 +48,8 @@ func PassAudio(name,data):
 		AudioServer.set_bus_mute(bus,true)
 	else:
 		AudioServer.set_bus_mute(bus,false)
-		AudioServer.set_bus_volume_db(bus,linear_to_db(sett['volume']/100))
+		var linvolume=sett['volume']/100
+		AudioServer.set_bus_volume_db(bus,linear_to_db(linvolume))
 	return
 
 func rtm():

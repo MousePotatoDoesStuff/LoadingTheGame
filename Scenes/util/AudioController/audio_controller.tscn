@@ -10,8 +10,10 @@ offset_bottom = 40.0
 script = ExtResource("1_mu7hh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
 
 [connection signal="finished" from="MusicPlayer" to="." method="checkLoop" binds= ["music"]]
 [connection signal="finished" from="SoundPlayer" to="." method="checkLoop" binds= ["sound"]]
