@@ -2,6 +2,7 @@ extends InputPasser
 
 signal toMenu()
 signal editLevelSignal(level:Save, israw:bool)
+signal addLevelsetSignal(levelset:SaveGroup)
 
 @onready var LSN=$LevelSet_List
 var levelsets=null
@@ -30,6 +31,7 @@ func set_levelsets(LG):
 	LSN.clear()
 	LSN.add_item("Select a levelset...")
 	for e in LG:
+		e:SaveGroup
 		LSN.add_item(e)
 
 func choose_levelset(choice_index:int):
