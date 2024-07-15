@@ -10,10 +10,13 @@ var curIndex=-1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if levelsets == null:
-		var SGraw='''[{"name":"Empty"},[]]'''
-		var SG=SaveGroup.fromString(SGraw)
-		$ClipboardSet.arrange_elements(SG)
+	if levelsets != null:
+		return
+	var SGraw='''[{"name":"Empty"},[]]'''
+	var SG=SaveGroup.fromString(SGraw)
+	var SG2=SaveGroup.fromString(SGraw)
+	$ClipboardSet.arrange_elements(SG)
+	$CurLevelSet.arrange_elements(SG2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
