@@ -13,7 +13,7 @@ var current_levelset=null
 func _ready():
 	load_save_data()
 	load_level_group_data()
-	if not self.save_data.get('opened',false):
+	if false and not self.save_data.get('opened',false):
 		default_save_data()
 	SCTRL.set_screen_by_index(ENUMS.screenum.MAIN,true)
 	var audio=self.get_save_data([ENUMS.settings],Dictionary())
