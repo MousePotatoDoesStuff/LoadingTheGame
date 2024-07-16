@@ -113,7 +113,7 @@ func finalize_step():
 	isReady=true
 	isWin=level.isWin({0:0})
 	if isWin:
-		play_level_audio(level_save, "music", "win", "macleod1")
+		play_level_audio(level_save, "music", "win", "macleod1a")
 		if isUnsolved:
 			register_win.emit()
 			isUnsolved=false

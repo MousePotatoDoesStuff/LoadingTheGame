@@ -80,11 +80,11 @@ func save_save_data():
 	F.close()
 	return
 func reset_progress():
-	self.save_data["levelsets_progress"]={util.BASELEVELS:{"solved":0}}
+	self.save_data["levelsets_progress"]={util.BASELEVELS:{"next_level":0}}
 	self.save_data["selected"]=util.BASELEVELS
 	self.save_save_data()
 func default_save_data():
-	var default_status={"solved":0}
+	var default_status={"next_level":0}
 	self.save_data={
 		"opened":false,
 		"selected":util.BASELEVELS,
@@ -155,7 +155,7 @@ func on_level_select(cursetid,level,mode,stackup:bool=false):
 		cursetid=current_levelset_ID
 	current_levelset_ID=cursetid
 	current_levelset=levelsets[cursetid]
-	var path=["levelsets_progress",cursetid,"solved"]
+	var path=["levelsets_progress",cursetid,"next_level"]
 	var highest=get_save_data(path,0,true)
 	set_save_data(path,highest)
 	if level==-1:
@@ -183,12 +183,13 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	var levelset_data=get_save_data(["levelsets_progress",levelset_name])
 	if levelset_data == null:
 		levelset_data=Dictionary()
-	var cur=levelset_data.get("solved",0)
+	var cur=levelset_data.get("next_level",0)
 	if lastSolved==-1:
-		lastSolved=cur
+		lastSolved=cur+1
 	if allowRegress or cur<=lastSolved:
-		levelset_data["solved"]=lastSolved
+		levelset_data["next_level"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
+	save_save_data()
 	return lastSolved
 
 func select_available_levels():
