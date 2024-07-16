@@ -195,6 +195,8 @@ func menuhandler_levelplayer(button_ID:int):
 
 func exit_game(exit_mode:int=0):
 	if OS.has_feature('web'):
+		var msg="Cannot exit game on web browser!"
+		$PopupMessage.show_message(msg,"OK",{'bg_underlay_inactive':Color.YELLOW})
 		print("Cannot exit game on web browser!")
 		return
 	get_tree().quit()

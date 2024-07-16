@@ -35,7 +35,6 @@ script = ExtResource("2_3blif")
 visible = false
 
 [node name="LevelPlayer" parent="ScreenController" instance=ExtResource("3_h1vkt")]
-visible = false
 layout_mode = 1
 
 [node name="LevelSelector" parent="ScreenController" instance=ExtResource("5_eo1sp")]
@@ -53,7 +52,7 @@ visible = false
 visible = false
 layout_mode = 1
 
-[node name="PopupMessage" parent="." instance=ExtResource("10_vvp0t")]
+[node name="PopupMessage" parent="ScreenController" instance=ExtResource("10_vvp0t")]
 visible = false
 layout_mode = 1
 
