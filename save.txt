@@ -14,7 +14,7 @@
 		"devmode": false,
 		"music": {
 			"muted": false,
-			"volume": 100
+			"volume": 22
 		},
 		"sound": {
 			"muted": false,
