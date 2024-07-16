@@ -1,0 +1,32 @@
+[
+	{
+		"editable": true,
+		"name": "TEST"
+	},
+	[
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 0,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Undertitled Level Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////////////////////Ag/\n/",
+			"halfsize": [
+				10,
+				10
+			],
+			"id": 1,
+			"level": "////////////////////Ae/\n/",
+			"name": "DefaultLevel",
+			"playheads": "FU"
+		}
+	]
+]

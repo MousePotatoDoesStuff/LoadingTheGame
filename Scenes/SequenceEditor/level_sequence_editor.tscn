@@ -44,6 +44,7 @@ theme_override_font_sizes/font_size = 42
 text = "Return"
 
 [node name="Button2" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 23.0
 offset_top = 438.0
@@ -53,6 +54,7 @@ theme_override_font_sizes/font_size = 42
 text = "Reload current"
 
 [node name="Button3" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 23.0
 offset_top = 257.0

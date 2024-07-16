@@ -45,7 +45,7 @@ func get_choice(last:int):
 		var display=str(id)+": "+lvname
 		res.append([id,display])
 	return res
-func _to_string():
+func toString():
 	var L=[self.data]
 	var rawSaves=[]
 	for e in self.saves:

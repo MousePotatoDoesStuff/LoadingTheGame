@@ -73,6 +73,7 @@ layout_mode = 1
 [connection signal="SaveOptionsSignal" from="ScreenController/Settings" to="." method="save_save_data"]
 [connection signal="returntomenu" from="ScreenController/Settings" to="ScreenController" method="last_screen"]
 [connection signal="editLevelSignal" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="edit_level"]
+[connection signal="saveSetSignal" from="ScreenController/LevelSequenceEditor" to="." method="save_level_group_data"]
 [connection signal="toMenu" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="last_screen"]
 [connection signal="exit_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="last_screen"]
 [connection signal="save_level_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="edit_level_save"]

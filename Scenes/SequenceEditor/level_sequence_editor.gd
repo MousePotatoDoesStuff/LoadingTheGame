@@ -3,6 +3,7 @@ extends InputPasser
 signal toMenu()
 signal editLevelSignal(level:Save, israw:bool)
 signal addLevelsetSignal(levelset:SaveGroup)
+signal saveSetSignal(levelset:SaveGroup)
 
 @onready var LSN=$LevelSet_List
 var levelsets=null
@@ -16,6 +17,8 @@ func _ready():
 	var SGraw='''[{"name":"Empty"},[]]'''
 	var SG=SaveGroup.fromString(SGraw)
 	var SG2=SaveGroup.fromString(SGraw)
+	SG2.name="Empty"
+	SG.name="Clipboard"
 	$ClipboardSet.arrange_elements(SG)
 	$CurLevelSet.arrange_elements(SG2)
 
@@ -47,6 +50,8 @@ func load_to_clipboard(level:Save):
 
 func save_from_clipboard(level:Save):
 	$CurLevelSet.insertElement(level)
+	var levelset=$ClipboardSet.levelset
+	saveSetSignal.emit(levelset)
 
 func on_show(data):
 	$ClipboardSet.arrange_elements()
@@ -63,3 +68,6 @@ func save_edit(level:Save):
 		return
 	var cur = $ClipboardSet if curIsClipboard else $CurLevelSet
 	cur.setElementCovertly(level,curIndex)
+	if not curIsClipboard:
+		var levelset=$CurLevelSet.levelset
+		saveSetSignal.emit(levelset)

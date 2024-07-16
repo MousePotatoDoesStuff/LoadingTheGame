@@ -1,4 +1,5 @@
 extends InputPasser
+const LEVELSET_FOLDER="res://Levelsets"
 @onready var SCTRL=$ScreenController
 @onready var level_data_path="res://Assets/Levels/TestLevels.txt"
 @onready var save_path="res://save.txt"
@@ -38,18 +39,17 @@ func check_level_group_data():
 func load_level_group_data():
 	var F=null
 	var content=""
-	var dir=DirAccess.get_files_at("res://")
+	var dir=DirAccess.get_files_at(LEVELSET_FOLDER)
 	current_levelset_ID=util.BASELEVELS
 	current_levelset=SaveGroup.fromString("")
 	levelsets[current_levelset_ID]=current_levelset
-	levelsets[current_levelset_ID+" 2"]=SaveGroup.fromString("")
 	self.possible_levelsets+=""
-	print(current_levelset._to_string())
+	print(current_levelset.toString())
 	for e in dir:
 		if !e.ends_with(".levelset"):
 			continue
 		self.possible_levelsets+=e+"|"
-		F=FileAccess.open("res://"+e,FileAccess.READ)
+		F=FileAccess.open(LEVELSET_FOLDER+"//"+e,FileAccess.READ)
 		content=F.get_as_text()
 		var newset=SaveGroup.fromString(content)
 		if newset != null:
@@ -58,6 +58,18 @@ func load_level_group_data():
 	var devmode=get_save_data(["settings","devmode"],false)
 	SCTRL.levelset_manager.set_levelsets(self.levelsets)
 	return
+
+func save_level_group_data(levelset:SaveGroup):
+	var levelset_name=levelset.name
+	assert(typeof(levelset_name)==typeof("wasd"))
+	levelsets[levelset_name]=levelset
+	var path=LEVELSET_FOLDER+"//"+levelset_name+".levelset"
+	var raw=levelset.toString()
+	var F=FileAccess.open(path,FileAccess.WRITE)
+	F.store_string(raw)
+	F.close()
+	return
+	
 # ------------------------------------------------------------------------------------------------ #
 # Save data handlers
 # ------------------------------------------------------------------------------------------------ #
