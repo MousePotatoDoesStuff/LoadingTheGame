@@ -110,10 +110,12 @@ func erase_save_data_and_exit():
 	self.save_data.clear()
 	save_save_data()
 	exit_game()
-func get_save_data(path,default=null):
+func get_save_data(path,default=null,return_default_immediately=false):
 	var cur=self.save_data
 	for e in path:
-		if typeof(cur)!=typeof(self.save_data):
+		if not return_default_immediately:
+			return_default_immediately=typeof(cur)!=typeof(self.save_data)
+		if return_default_immediately:
 			return default
 		cur=cur.get(e,default)
 	return cur
@@ -153,7 +155,9 @@ func on_level_select(cursetid,level,mode,stackup:bool=false):
 		cursetid=current_levelset_ID
 	current_levelset_ID=cursetid
 	current_levelset=levelsets[cursetid]
-	var highest=save_data["levelsets_progress"][cursetid]["solved"]
+	var path=["levelsets_progress",cursetid,"solved"]
+	var highest=get_save_data(path,0,true)
+	set_save_data(path,highest)
 	if level==-1:
 		level=highest
 	level=min(level,len(current_levelset.saves)-1)
@@ -180,6 +184,8 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 	if levelset_data == null:
 		levelset_data=Dictionary()
 	var cur=levelset_data.get("solved",0)
+	if lastSolved==-1:
+		lastSolved=cur
 	if allowRegress or cur<=lastSolved:
 		levelset_data["solved"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)

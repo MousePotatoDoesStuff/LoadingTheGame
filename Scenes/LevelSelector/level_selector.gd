@@ -31,9 +31,11 @@ func set_levelsets(in_levelsets:Dictionary,chooseSet:String=util.BASELEVELS):
 	var selected=0
 	var cur=0
 	for e in levelsets:
+		var lvs:SaveGroup=levelsets[e]
+		if lvs.saves.size()==0:
+			continue
 		if e==chooseSet:
 			selected=cur
-		var lvs=levelsets[e]
 		LSN.add_item(e)
 		cur+=1
 	LSN.select(selected)
@@ -51,6 +53,9 @@ func set_levels(levelset:SaveGroup,last:int):
 	for e in L:
 		LVN.add_item(e[1],e[0])
 	var sel=LVN.selected
+	if sel==-1:
+		LVN.select(0)
+		sel=0
 	var lvs=levelset.saves[sel]
 	show_level(lvs)
 

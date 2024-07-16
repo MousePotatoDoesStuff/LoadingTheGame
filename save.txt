@@ -2,7 +2,7 @@
 	"settings": {
 		"music": {
 			"muted": false,
-			"volume": 10
+			"volume": 14
 		}
 	}
 }

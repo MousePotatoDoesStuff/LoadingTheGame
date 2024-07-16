@@ -1,11 +1,13 @@
 extends InputPasser
 
 signal command_signal(ID:int)
+signal register_win()
 
 @export var editingEnabled=false
 var saved_input:Dictionary={}
 var isReady=true
 var isWin=false
+var isUnsolved=false
 var untilSkip=0
 var maxMoves=0
 var curMoves=0
@@ -35,10 +37,13 @@ func _process(delta):
 func IP_receive(input_data:Dictionary,args:Dictionary={}):
 	if "input_keys" in input_data:
 		var inpk:Dictionary = input_data["input_keys"]
-		var x = int(inpk.get("right",false))-int(inpk.get("up,false"))
-		var y = int(inpk.get("down",false))-int(inpk.get("up,false"))
+		var x = int(inpk.get("right",false))-int(inpk.get("up",false))
+		var y = int(inpk.get("down",false))-int(inpk.get("up",false))
 		var inputVector=Vector2i(x,y)
 		accept_input(0,inputVector)
+
+func accept_input(agentID:int,move:Vector2i):
+	saved_input[agentID]=move
 
 func update_UI():
 	$RightPlayMenu/Skip.update(untilSkip)
@@ -62,6 +67,7 @@ func update_buttons(isFirst:bool,isUnsolved:bool):
 	$LPMControl/LeftPlayMenu.toggleButtons(X)
 
 func load_level(inputSave:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool):
+	self.isUnsolved=isUnsolved
 	editingEnabled=_editingEnabled
 	isReady=true
 	isWin=false
@@ -77,9 +83,6 @@ func load_level(inputSave:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool
 
 func export_level_data():
 	pass
-
-func accept_input(agentID:int,move:Vector2i):
-	saved_input[agentID]=move
 
 func isUndoCheckpoint(returnData:Array[int]):
 	return returnData[0]!=0
@@ -111,6 +114,9 @@ func finalize_step():
 	isWin=level.isWin({0:0})
 	if isWin:
 		play_level_audio(level_save, "music", "win", "macleod1")
+		if isUnsolved:
+			register_win.emit()
+			isUnsolved=false
 	untilSkip-=1
 	curMoves+=1
 
