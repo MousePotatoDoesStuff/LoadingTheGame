@@ -67,7 +67,8 @@ func add_element(in_el:Save,in_dex:int=-1):
 	if in_dex==-1 or in_dex>=len(saves):
 		in_dex=len(saves)
 		saves.append(in_el)
-	saves.insert(in_dex,in_el)
+	else:
+		saves.insert(in_dex,in_el)
 	in_el.set_id(next_index)
 	next_index+=1
 
