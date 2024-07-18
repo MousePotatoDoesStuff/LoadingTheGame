@@ -1,8 +1,16 @@
 {
 	"settings": {
+		"audio": {
+			"muted": false,
+			"volume": 100
+		},
 		"music": {
-			"muted": true,
+			"muted": false,
 			"volume": 14
+		},
+		"sound": {
+			"muted": false,
+			"volume": 100
 		}
 	}
 }

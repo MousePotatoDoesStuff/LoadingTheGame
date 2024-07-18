@@ -8,7 +8,7 @@ signal volume_changed(name,data)
 @onready var text=$Text
 @onready var reset=$Reset
 var muted=false
-var volume=50
+var volume=100
 var checkValid=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
