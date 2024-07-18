@@ -64,7 +64,9 @@ theme_override_font_sizes/font_size = 42
 text = "Save current"
 
 [connection signal="editSignal" from="CurLevelSet" to="." method="pass_edit" binds= [false]]
+[connection signal="fileSaveSignal" from="CurLevelSet" to="." method="save_levelset"]
 [connection signal="moveSignal" from="CurLevelSet" to="." method="load_to_clipboard"]
+[connection signal="editSignal" from="ClipboardSet" to="." method="pass_edit" binds= [true]]
 [connection signal="moveSignal" from="ClipboardSet" to="." method="save_from_clipboard"]
 [connection signal="item_selected" from="LevelSet_List" to="." method="choose_levelset"]
 [connection signal="pressed" from="Button" to="." method="toMenuFn"]

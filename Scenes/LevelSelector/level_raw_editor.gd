@@ -22,13 +22,16 @@ func _ready():
 	)
 	load_level(defaultLevelSave)
 
-func load_level(_level:Save):
-	level=_level
+func update_level():
 	$LevelDisplay.load_level(level)
 	var name=level.data.get("name")
 	var index=level.get_id()
 	$TextWindow/Name.text=str(index)+". "+name
 	$TextWindow/LevelData.text=level.get_full_layout()
+
+func load_level(_level:Save):
+	level=_level
+	update_level()
 
 func display_error(text:String,color:Color=Color.RED):
 	$TextWindow/ColorRect/ErrorText.clear()
@@ -49,6 +52,7 @@ func save_level():
 		return
 	level=Save.initDict(rawdict)
 	display_error("Level saved",Color.GREEN)
+	update_level()
 	save_level_signal.emit(level)
 	return
 

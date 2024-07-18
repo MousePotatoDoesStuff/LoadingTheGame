@@ -45,12 +45,16 @@ func choose_levelset(choice_index:int):
 	var levelset=self.levelsets[choice_name]
 	$CurLevelSet.arrange_elements(levelset)
 
+func save_levelset():
+	var levelset=$CurLevelSet.levelset
+	saveSetSignal.emit(levelset)
+
 func load_to_clipboard(level:Save):
 	$ClipboardSet.insertElement(level)
 
 func save_from_clipboard(level:Save):
 	$CurLevelSet.insertElement(level)
-	var levelset=$ClipboardSet.levelset
+	var levelset=$CurLevelSet.levelset
 	saveSetSignal.emit(levelset)
 
 func on_show(data):

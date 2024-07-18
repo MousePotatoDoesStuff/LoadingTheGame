@@ -1,6 +1,7 @@
 extends Control
 signal moveSignal(level:Save)
 signal editSignal(level:Save)
+signal fileSaveSignal
 
 @export var elementSize:float=300
 @export var elementOffset:float=250
@@ -66,21 +67,29 @@ func getFirstVisibleIndex():
 func addElement(element:Save,index:int=-1, existingElement=null):
 	levelset.add_element(element,index)
 	arrange_elements()
+	fileSaveSignal.emit()
 
 func setElementCovertly(element:Save,index:int=-1, existingElement=null):
 	print(element.get_full_layout())
 	levelset.set_element(element,index)
 
+#
+# Setters that need to be saved
+#
+
 func setElement(element:Save,index:int=-1, existingElement=null):
 	levelset.set_element(element,index)
 	arrange_elements()
+	fileSaveSignal.emit()
 
 func insertElement(element):
 	var index=getFirstVisibleIndex()
 	addElement(element,index)
+	fileSaveSignal.emit()
 
 func editElement(elem_id):
 	editSignal.emit(levelset.saves[elem_id])
+	fileSaveSignal.emit()
 
 func moveElement(elem_id):
 	moveSignal.emit(levelset.saves[elem_id].copy())
@@ -88,19 +97,23 @@ func moveElement(elem_id):
 func copyElement(elem_id):
 	levelset.add_element(levelset.saves[elem_id].copy(),elem_id+1)
 	arrange_elements()
+	fileSaveSignal.emit()
 
 func deleteElement(elem_id):
 	levelset.remove_element(elem_id)
 	arrange_elements()
+	fileSaveSignal.emit()
 
 func moveDn(elem_id):
 	if elem_id+1==len(levelset.saves):
 		return
 	levelset.swap_elements(elem_id,elem_id+1)
 	arrange_elements()
+	fileSaveSignal.emit()
 
 func moveUp(elem_id):
 	if elem_id==0:
 		return
 	levelset.swap_elements(elem_id,elem_id-1)
 	arrange_elements()
+	fileSaveSignal.emit()
