@@ -278,6 +278,6 @@ script = ExtResource("5_i8yqm")
 [connection signal="pressed" from="LevelDisplay/Complete/ColorRect2/Continue2" to="." method="next_level"]
 [connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
 [connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]
-[connection signal="pressed" from="RightPlayMenu/Skip" to="." method="next_level"]
+[connection signal="pressed" from="RightPlayMenu/Skip" to="." method="skip"]
 [connection signal="pressed" from="RightPlayMenu/Continue" to="." method="next_level"]
 [connection signal="ControlSignal" from="Control/Control2/Controller" to="." method="accept_input"]

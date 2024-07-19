@@ -66,7 +66,8 @@ func update_buttons(isFirst:bool,isUnsolved:bool):
 	]
 	$LPMControl/LeftPlayMenu.toggleButtons(X)
 
-func load_level(inputSave:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool):
+func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool):
+	var inputSave=inputSaveBase.copy_all()
 	self.isUnsolved=isUnsolved
 	editingEnabled=_editingEnabled
 	isReady=true
@@ -76,6 +77,7 @@ func load_level(inputSave:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool
 	edit.disabled=not editingEnabled
 	untilSkip=inputSave.data.get("skip",100)
 	maxMoves=inputSave.data.get("maxMoves",100)
+	curMoves=0
 	level_save=inputSave.copy()
 	level_steps.clear()
 	level.load_level(inputSave)
@@ -136,6 +138,9 @@ func reset():
 	curMoves=0
 	play_level_audio(level_save, "music", "play", "macleod1")
 
+func skip():
+	register_win.emit()
+	command_signal.emit(2)
 
 func next_level():
 	command_signal.emit(2)

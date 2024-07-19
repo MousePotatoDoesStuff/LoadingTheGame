@@ -17,8 +17,8 @@ const defaultFile='''[
 {
 	"name":"DefaultLevel",
 	"halfsize":[10,10],
-	"level":"////////////////////Ae/\n/",
-	"bar":"////////////////////Ag/\n/",
-	"playheads":"FU"
+	"level":"Ae////////////////////Ae/\n/",
+	"bar":"/////////////////////\n/",
+	"playheads":"AA"
 }
 ]]'''

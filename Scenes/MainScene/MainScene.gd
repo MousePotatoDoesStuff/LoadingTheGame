@@ -7,6 +7,7 @@ var possible_levelsets=""
 var levelsets=Dictionary()
 var current_levelset_ID:String=util.BASELEVELS
 var current_levelset=null
+var current_level=0
 @onready var save_data=Dictionary()
 @onready var autoplay=$ScreenController.autoplay
 
@@ -156,7 +157,7 @@ func on_level_select(cursetid,level,mode,stackup:bool=false):
 	current_levelset_ID=cursetid
 	current_levelset=levelsets[cursetid]
 	var path=["levelsets_progress",cursetid,"next_level"]
-	var highest=get_save_data(path,0,true)
+	var highest=get_save_data(path,{"next_level":0},false)
 	set_save_data(path,highest)
 	if level==-1:
 		level=highest
@@ -165,7 +166,41 @@ func on_level_select(cursetid,level,mode,stackup:bool=false):
 	var level_node=SCTRL.screen_node[level_mode]
 	var save:Save=current_levelset.saves[level]
 	SCTRL.set_screen(level_mode,stackup)
+	current_level=level
 	level_node.load_level(save,false,level==0,level==highest)
+
+func next_level_from_player():
+	on_win(current_level)
+	var path=["levelsets_progress",current_levelset_ID,"next_level"]
+	var highest=get_save_data(path,{"next_level":0},false)
+	current_level+=1
+	var level_mode=ENUMS.screenum.PLAYER
+	var level_node=SCTRL.screen_node[level_mode]
+	if current_level==len(current_levelset.saves):
+		current_level=0
+		SCTRL.set_screen()
+		$PopupMessage.show_message("Thank you for playing!","OK",
+		{'bg_underlay_inactive':Color.YELLOW})
+		return
+	var save:Save=current_levelset.saves[current_level]
+	SCTRL.set_screen(level_mode,false)
+	level_node.load_level(save,false,false,current_level==highest)
+
+func prev_level_from_player():
+	if current_level==0:
+		$PopupMessage.show_message("This is the first level!","OK",
+		{'bg_underlay_inactive':Color.YELLOW})
+		return
+	current_level-=1
+	var level_mode=ENUMS.screenum.PLAYER
+	var level_node=SCTRL.screen_node[level_mode]
+	if current_level==len(current_levelset.saves):
+		current_level=0
+		SCTRL.set_screen()
+		return
+	var save:Save=current_levelset.saves[current_level]
+	SCTRL.set_screen(level_mode,false)
+	level_node.load_level(save,false,current_level==0,false)
 
 func on_win(level):
 	change_level_progress(current_levelset_ID,level,false)
@@ -180,7 +215,7 @@ func change_levelset(levelset_name):
 	$ScreenController/LevelSelector.set_levels(current_levelset,last)
 
 func change_level_progress(levelset_name,lastSolved,allowRegress=true):
-	var levelset_data=get_save_data(["levelsets_progress",levelset_name])
+	var levelset_data=get_save_data(["levelsets_progress",levelset_name],{})
 	if levelset_data == null:
 		levelset_data=Dictionary()
 	var cur=levelset_data.get("next_level",0)
@@ -190,6 +225,8 @@ func change_level_progress(levelset_name,lastSolved,allowRegress=true):
 		levelset_data["next_level"]=lastSolved
 	self.set_save_data(["levelsets_progress",levelset_name],levelset_data)
 	save_save_data()
+	if lastSolved<cur and not allowRegress:
+		lastSolved=cur
 	return lastSolved
 
 func select_available_levels():
@@ -206,6 +243,12 @@ func menuhandler_levelplayer(button_ID:int):
 	if button_ID==3:
 		SCTRL.last_screen()
 		return
+	if button_ID==2:
+		next_level_from_player()
+	if button_ID==1:
+		prev_level_from_player()
+	if button_ID==0:
+		SCTRL.set_screen(ENUMS.screenum.SELECTOR,false)
 	print("Pressed button %d... but it didn't work" % button_ID)
 
 # ------------------------------------------------------------------------------------------------ #

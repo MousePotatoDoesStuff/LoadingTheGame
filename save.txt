@@ -1,9 +1,10 @@
 {
 	"levelsets_progress": {
 		"Base Levels": {
-			"next_level": 0
+			"next_level": 2
 		}
 	},
+	"selected": "Base Levels",
 	"settings": {
 		"audio": {
 			"muted": false,

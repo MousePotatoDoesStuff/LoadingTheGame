@@ -21,6 +21,13 @@ func _init(in_data:Dictionary,
 	self.bar_layout=in_bar_layout
 	self.playheads=in_playheads
 	return
+func copy_all():
+	var text=get_full_layout()
+	var jsvar=JSON.new()
+	var error=jsvar.parse(text)
+	var rawdict=jsvar.data
+	var newlevel=Save.initDict(rawdict)
+	return newlevel
 static func initDict(D:Dictionary)->Save:
 	D["name"]=D.get("name","Untitled")
 	var res=Save.new(
