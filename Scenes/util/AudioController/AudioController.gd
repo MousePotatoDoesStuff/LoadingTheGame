@@ -12,6 +12,16 @@ func _ready():
 		'sound':$SoundPlayer
 	}
 	import_audio_files()
+	if get_parent() == get_tree().root:
+		var command="audio play music macleod1 force"
+		var call=Callable(self,"get_command").bind(command)
+		call.call()
+		play_audio_file("macleod1","music")
+		var timer=$Timer
+		timer.wait_time = 1.5
+		timer.one_shot=true
+		timer.connect("timeout", call)
+		timer.start()
 	# get_command("audio play music blipSelect noloop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,12 +69,13 @@ func get_input_pass(input:Dictionary):
 func get_command(command:String):
 	var COM=command.split(" ")
 	if len(COM)<2:
-		push_error("Invalid audio command: "+command)
+		return
 	if COM[0]=="audio":
 		handle_audio(COM)
 		return
 
-func handle_audio(COM:Array[String]):
+func handle_audio(COM:Array[String]): # e.g. ["audio" "play" "music" "macleod1"]
+	print(COM)
 	if audio_dict.is_empty():
 		push_error("Audio controller must be placed first!")
 	var mode=COM[1]
@@ -98,6 +109,7 @@ func handle_audio(COM:Array[String]):
 
 func checkLoop(source:String):
 	if not is_looping.get(source,false):
+		playing[source]=null
 		return
 	var playnow = playing.get(source, null)
 	if playnow == null:
