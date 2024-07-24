@@ -82,6 +82,7 @@ func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:
 	level_steps.clear()
 	level.load_level(inputSave)
 	play_level_audio(inputSave, "music", "play", "macleod1")
+	$LPMControl/LevelDataDisplay.text="[center]"+inputSaveBase.get_name()
 
 func export_level_data():
 	pass

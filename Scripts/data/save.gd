@@ -60,6 +60,8 @@ func set_id(in_id:int):
 	data["id"]=in_id
 func get_id():
 	return self.data.get("id","-1")
+func get_name():
+	return self.data.get("name","Untitled")
 func get_idname():
 	return str(get_id())+": "+self.data.get("name","Untitled")
 func get_layout(is_bar_layout):
