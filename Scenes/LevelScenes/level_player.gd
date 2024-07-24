@@ -19,7 +19,7 @@ var level_steps:Array[Save]=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# load_level(level.defaultLevelSave,false,false,false)
+	# load_level(level.defaultLevelSave,false,false,false,-1)
 	pass # Replace with function body.
 
 
@@ -66,7 +66,7 @@ func update_buttons(isFirst:bool,isUnsolved:bool):
 	]
 	$LPMControl/LeftPlayMenu.toggleButtons(X)
 
-func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool):
+func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool,setlen:int):
 	var inputSave=inputSaveBase.copy_all()
 	self.isUnsolved=isUnsolved
 	editingEnabled=_editingEnabled
@@ -82,7 +82,10 @@ func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:
 	level_steps.clear()
 	level.load_level(inputSave)
 	play_level_audio(inputSave, "music", "play", "macleod1")
-	$LPMControl/LevelDataDisplay.text="[center]"+inputSaveBase.get_name()
+	
+	var id=inputSaveBase.get_id()
+	var name=inputSaveBase.get_name()
+	$LPMControl/LevelDataDisplay.text="[center]%s\n%d/%d" % [name, id, setlen]
 
 func export_level_data():
 	pass

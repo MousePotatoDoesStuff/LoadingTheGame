@@ -10,7 +10,8 @@ func _ready():
 	pass # Replace with function body.
 
 func load_level():
-	$LevelPlayer.load_level(levelset.saves[cur],false,cur==0,cur==best)
+	var size=levelset.saves.size()
+	$LevelPlayer.load_level(levelset.saves[cur],false,cur==0,cur==best,size)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

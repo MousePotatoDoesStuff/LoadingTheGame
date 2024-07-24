@@ -6,7 +6,7 @@ const LEVELSET_FOLDER="res://Levelsets"
 var possible_levelsets=""
 var levelsets=Dictionary()
 var current_levelset_ID:String=util.BASELEVELS
-var current_levelset=null
+var current_levelset:SaveGroup=null
 var current_level=0
 @onready var save_data=Dictionary()
 @onready var autoplay=$ScreenController.autoplay
@@ -167,7 +167,8 @@ func on_level_select(cursetid,level,mode,stackup:bool=false):
 	var save:Save=current_levelset.saves[level]
 	SCTRL.set_screen(level_mode,stackup)
 	current_level=level
-	level_node.load_level(save,false,level==0,level==highest)
+	var size=current_levelset.saves.size()
+	level_node.load_level(save,false,level==0,level==highest,size)
 
 func next_level_from_player():
 	on_win(current_level)
@@ -184,7 +185,8 @@ func next_level_from_player():
 		return
 	var save:Save=current_levelset.saves[current_level]
 	SCTRL.set_screen(level_mode,false)
-	level_node.load_level(save,false,false,current_level==highest)
+	var size=current_levelset.saves.size()
+	level_node.load_level(save,false,false,current_level==highest,size)
 
 func prev_level_from_player():
 	if current_level==0:
@@ -200,7 +202,8 @@ func prev_level_from_player():
 		return
 	var save:Save=current_levelset.saves[current_level]
 	SCTRL.set_screen(level_mode,false)
-	level_node.load_level(save,false,current_level==0,false)
+	var size=current_levelset.saves.size()
+	level_node.load_level(save,false,current_level==0,false,size)
 
 func on_win(level):
 	change_level_progress(current_levelset_ID,level,false)
