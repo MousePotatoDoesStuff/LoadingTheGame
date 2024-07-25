@@ -46,11 +46,7 @@ func accept_input(agentID:int,move:Vector2i):
 	saved_input[agentID]=move
 
 func update_UI():
-	$RightPlayMenu/Skip.update(untilSkip)
-	$"LevelDisplay/Out Of Moves".visible=not isWin and curMoves>=maxMoves
-	$LevelDisplay/Complete.visible=isWin
-	$RightPlayMenu/Continue.disabled=not isWin
-	$RightPlayMenu/Moves.text="[center]Moves remaining:\n"+str(maxMoves-curMoves)
+	pass
 
 func play_level_audio(les:Save, mtype:String, key:String, default:String):
 	var audio=les.data.get(key,default)
