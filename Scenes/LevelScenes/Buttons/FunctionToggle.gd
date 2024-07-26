@@ -8,7 +8,7 @@ var delete=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	setFunction(0,false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +20,10 @@ func setFunction(new_fid,new_delete):
 		return
 	fid=new_fid
 	delete=new_delete
-	for B in buttons:
+	for i in range(buttons.size()):
+		var B=buttons[i]
 		B.toggle_button(delete)
+		B.disabled=fid==i
 
 func setFid(new_fid):
 	setFunction(new_fid,delete)

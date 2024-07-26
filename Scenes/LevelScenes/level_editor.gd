@@ -4,7 +4,6 @@ signal command_signal(ID:int)
 var saved_input:Dictionary={}
 
 @onready var level=$LevelDisplay
-@onready var edit=$RightPlayMenu/EditButton3
 var level_save:Save=null
 var level_steps:Array[Save]=[]
 

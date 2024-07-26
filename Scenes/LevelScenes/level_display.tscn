@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb4jbbxf3h2ql"]
+[gd_scene load_steps=7 format=3 uid="uid://bb4jbbxf3h2ql"]
 
 [ext_resource type="Script" path="res://Scenes/LevelScenes/level_display.gd" id="1_7jvln"]
 [ext_resource type="TileSet" uid="uid://70y07tu6wdtd" path="res://Assets/Tilesets/LevelTileSet.tres" id="2_1dlca"]
 [ext_resource type="Script" path="res://Scripts/scaling_tile_map.gd" id="4_18ik8"]
 [ext_resource type="TileSet" uid="uid://dkmrw1a1ku14m" path="res://Assets/Tilesets/BarTileSet.tres" id="4_svaoj"]
 [ext_resource type="PackedScene" uid="uid://uefjo1h2x6lf" path="res://Scenes/util/Playheads/playhead.tscn" id="5_43a5b"]
+[ext_resource type="PackedScene" uid="uid://4j5hicqult7v" path="res://Scenes/util/OnscreenController/crosshair.tscn" id="6_36ioa"]
 
 [node name="LevelDisplay" type="Control"]
 layout_mode = 3
@@ -52,4 +53,10 @@ parentPath = NodePath("..")
 [node name="Playhead" parent="BarTileMap" instance=ExtResource("5_43a5b")]
 visible = false
 offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Crosshair" parent="." instance=ExtResource("6_36ioa")]
+layout_mode = 1
+anchor_right = 0.1
+anchor_bottom = 0.1
 offset_bottom = 0.0
