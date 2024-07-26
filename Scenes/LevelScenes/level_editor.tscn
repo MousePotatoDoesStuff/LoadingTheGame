@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3a07h7l7fvtt"]
+[gd_scene load_steps=6 format=3 uid="uid://b3a07h7l7fvtt"]
 
 [ext_resource type="Script" path="res://Scenes/LevelScenes/level_editor.gd" id="1_d46pv"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/Buttons/FunctionToggle.gd" id="2_3ykr0"]
 [ext_resource type="Script" path="res://Scenes/LevelScenes/Buttons/ToggleModeButton.gd" id="2_byd0d"]
 [ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="3_tngh3"]
 [ext_resource type="Script" path="res://Scenes/LevelScenes/TestTimer.gd" id="7_ggl07"]
@@ -35,6 +36,7 @@ offset_left = 57.0
 offset_top = 180.0
 offset_right = 319.0
 offset_bottom = 750.0
+script = ExtResource("2_3ykr0")
 
 [node name="EditPaths" type="Button" parent="LPMControl/FunctionToggle"]
 layout_mode = 2
@@ -74,6 +76,7 @@ anchor_bottom = 0.77907
 offset_bottom = 6.10352e-05
 text = "Switch to delete mode"
 script = ExtResource("2_byd0d")
+reverse = true
 
 [node name="LevelDisplay" parent="." instance=ExtResource("3_tngh3")]
 layout_mode = 1
@@ -113,7 +116,6 @@ offset_right = 0.208862
 offset_bottom = 0.322426
 theme_override_font_sizes/font_size = 32
 text = "Undo"
-metadata/_edit_use_anchors_ = true
 
 [node name="Reset" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
@@ -129,7 +131,7 @@ offset_bottom = 41.7885
 theme_override_font_sizes/font_size = 32
 text = "Reset"
 
-[node name="EditButton3" type="Button" parent="RightPlayMenu"]
+[node name="JSON editor" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -139,10 +141,9 @@ offset_top = 287.713
 offset_right = -20.5045
 offset_bottom = 227.713
 theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Edit"
+text = "JSON editor"
 
-[node name="Skip" type="Button" parent="RightPlayMenu"]
+[node name="Save" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -152,10 +153,9 @@ offset_top = 413.587
 offset_right = -18.7063
 offset_bottom = 353.587
 theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Skip"
+text = "Save"
 
-[node name="Continue" type="Button" parent="RightPlayMenu"]
+[node name="Save and exit" type="Button" parent="RightPlayMenu"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -166,13 +166,16 @@ offset_top = 537.663
 offset_right = -20.5045
 offset_bottom = 475.863
 theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Continue
+text = "Save and exit
 "
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("7_ggl07")
 
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditPaths" to="LPMControl/FunctionToggle" method="setFid" binds= [0]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditTrails" to="LPMControl/FunctionToggle" method="setFid" binds= [1]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditPlayheads" to="LPMControl/FunctionToggle" method="setFid" binds= [2]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditSwitch tos" to="LPMControl/FunctionToggle" method="toggleDelete"]
 [connection signal="stoppedMoving" from="LevelDisplay" to="." method="finalize_step"]
 [connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
 [connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]
