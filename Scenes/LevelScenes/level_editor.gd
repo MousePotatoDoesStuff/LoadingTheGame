@@ -37,10 +37,13 @@ func handle_click(mapCoords):
 	if mode==2:
 		save_undo()
 		if isdelete:
-			pass
+			level.remove_playhead(mapCoords)
 		else:
 			level.apply_playhead(mapCoords,"")
-			level.update_save()
+		level.update_save()
+		level_save=level.curSave
+		level.load_level(level_save.copy())
+		print(level_save.get_full_layout())
 		return
 	if first_placed==Vector2i.ONE*9999:
 		first_placed=mapCoords
@@ -62,6 +65,8 @@ func handle_click(mapCoords):
 	print(mapCoords,"->",first_placed)
 	first_placed=mapCoords
 	level.placeCrosshair(first_placed)
+	return
+
 func change_mode(new_mode,new_isdelete):
 	mode=new_mode
 	isdelete=new_isdelete

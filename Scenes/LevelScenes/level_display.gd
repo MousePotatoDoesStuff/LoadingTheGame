@@ -7,7 +7,8 @@ signal clickedTile(tilepos:Vector2i)
 @export var editMode=false
 @onready var level=$LevelTileMap
 @onready var bar=$BarTileMap
-@onready var playheads=[]
+@onready var playheads:Array=[]
+var takenPositions={}
 var curSave:Save=null
 var movingCount=0
 var is_updated=true
@@ -73,6 +74,7 @@ func clear():
 		e.queue_free()
 		e.hide()
 	self.playheads=[]
+	self.takenPositions={}
 	return
 
 func load_level(level_data:Save):
@@ -83,6 +85,7 @@ func load_level(level_data:Save):
 	level.load_level(level_data.space_layout,gridHalfsize)
 	bar.load_level(level_data.bar_layout,gridHalfsize)
 	self.playheads=[]
+	takenPositions={}
 	for data:String in level_data.get_playheads():
 		var coords:Vector2i=util.str_to_vector(data)-gridHalfsize
 		apply_playhead(coords,data.substr(3))
@@ -129,14 +132,31 @@ func apply_line(type:int,start:Vector2i,end:Vector2i,deletion:bool,updateSave:bo
 		elif type==1:
 			curSave.bar_layout=data
 
-func apply_playhead(pos:Vector2, data:String):
+func apply_playhead(pos:Vector2i, data:String, force:bool=false):
+	if not force and pos in takenPositions:
+		return false
+	var newpos=bar.map_to_local(pos)
 	var head=playhead.instantiate()
+	self.takenPositions[pos]=self.playheads.size()
 	self.playheads.append(head)
 	bar.add_child(head)
-	var newpos=bar.map_to_local(pos)
 	head.position=newpos
 	head.endMotion.connect(finalise_move)
 	head.apply_data(data)
+	return true
+
+func remove_playhead(pos:Vector2i):
+	if pos not in takenPositions:
+		return
+	var curind=takenPositions[pos]
+	if curind+1==playheads.size():
+		playheads.pop_back()
+		return
+	var replacement=playheads.pop_back()
+	playheads[curind]=replacement
+	var repl_abs_pos=replacement.position
+	var replpos=bar.local_to_map(repl_abs_pos)
+	takenPositions[replpos]=curind
 	return
 
 func move_playhead(head,dirindex:int):
