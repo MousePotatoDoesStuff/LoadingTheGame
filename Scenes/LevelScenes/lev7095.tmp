@@ -1,0 +1,184 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3a07h7l7fvtt"]
+
+[ext_resource type="Script" path="res://Scenes/LevelScenes/level_editor.gd" id="1_d46pv"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/Buttons/FunctionToggle.gd" id="2_3ykr0"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/Buttons/ToggleModeButton.gd" id="2_byd0d"]
+[ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="3_tngh3"]
+[ext_resource type="Script" path="res://Scenes/LevelScenes/TestTimer.gd" id="7_ggl07"]
+
+[node name="LevelEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d46pv")
+
+[node name="LPMControl" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.219
+anchor_bottom = 1.0
+offset_right = -0.400024
+
+[node name="LevelDataDisplay" type="RichTextLabel" parent="LPMControl"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 38.0
+offset_right = 330.0
+offset_bottom = 134.0
+bbcode_enabled = true
+text = "[center]Level Name Here"
+
+[node name="FunctionToggle" type="Control" parent="LPMControl"]
+anchors_preset = 0
+offset_left = 57.0
+offset_top = 180.0
+offset_right = 319.0
+offset_bottom = 750.0
+script = ExtResource("2_3ykr0")
+
+[node name="EditPaths" type="Button" parent="LPMControl/FunctionToggle"]
+layout_mode = 2
+anchor_left = 0.00381679
+anchor_top = 0.00581395
+anchor_right = 0.965649
+anchor_bottom = 0.186047
+text = "Edit paths"
+script = ExtResource("2_byd0d")
+
+[node name="EditTrails" type="Button" parent="LPMControl/FunctionToggle"]
+layout_mode = 2
+anchor_left = 0.00381679
+anchor_top = 0.209302
+anchor_right = 0.965649
+anchor_bottom = 0.389535
+offset_bottom = -1.52588e-05
+text = "Edit trails"
+script = ExtResource("2_byd0d")
+
+[node name="EditPlayheads" type="Button" parent="LPMControl/FunctionToggle"]
+layout_mode = 2
+anchor_left = 0.00381679
+anchor_top = 0.406977
+anchor_right = 0.965649
+anchor_bottom = 0.587209
+offset_bottom = -6.10352e-05
+text = "Edit playheads"
+script = ExtResource("2_byd0d")
+
+[node name="EditSwitch tos" type="Button" parent="LPMControl/FunctionToggle"]
+layout_mode = 2
+anchor_left = 0.00381679
+anchor_top = 0.598837
+anchor_right = 0.965649
+anchor_bottom = 0.77907
+offset_bottom = 6.10352e-05
+text = "Switch to delete mode"
+script = ExtResource("2_byd0d")
+reverse = true
+
+[node name="LevelDisplay" parent="." instance=ExtResource("3_tngh3")]
+layout_mode = 1
+anchor_left = 0.219
+anchor_top = 0.0
+anchor_right = 0.768
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_top = 0.0
+offset_right = 21.2
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.975975, 1)
+editMode = true
+
+[node name="RightPlayMenu" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.774
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.599976
+offset_right = -36.0
+offset_bottom = -91.0
+grow_horizontal = 0
+scale = Vector2(1.11222, 1.11222)
+
+[node name="Undo" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0243326
+anchor_top = 0.0180467
+anchor_right = 0.947333
+anchor_bottom = 0.155441
+offset_left = 0.183846
+offset_top = 11.4742
+offset_right = 0.208862
+offset_bottom = 0.322426
+theme_override_font_sizes/font_size = 32
+text = "Undo"
+
+[node name="Reset" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.137
+anchor_right = 0.954
+anchor_bottom = 0.262
+offset_left = -7.37769
+offset_top = 42.9135
+offset_right = -7.35269
+offset_bottom = 41.7885
+theme_override_font_sizes/font_size = 32
+text = "Reset"
+
+[node name="JSON editor" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 4.49552
+offset_top = 287.713
+offset_right = -20.5045
+offset_bottom = 227.713
+theme_override_font_sizes/font_size = 32
+text = "JSON editor"
+
+[node name="Save" type="Button" parent="RightPlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 6.29373
+offset_top = 413.587
+offset_right = -18.7063
+offset_bottom = 353.587
+theme_override_font_sizes/font_size = 32
+text = "Save"
+
+[node name="Save and exit" type="Button" parent="RightPlayMenu"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 4.49552
+offset_top = 537.663
+offset_right = -20.5045
+offset_bottom = 475.863
+theme_override_font_sizes/font_size = 32
+text = "Save and exit
+"
+
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("7_ggl07")
+
+[connection signal="onSetFunction" from="LPMControl/FunctionToggle" to="." method="change_mode"]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditPaths" to="LPMControl/FunctionToggle" method="setFid" binds= [0]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditTrails" to="LPMControl/FunctionToggle" method="setFid" binds= [1]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditPlayheads" to="LPMControl/FunctionToggle" method="setFid" binds= [2]]
+[connection signal="pressed" from="LPMControl/FunctionToggle/EditSwitch tos" to="LPMControl/FunctionToggle" method="toggleDelete"]
+[connection signal="clickedTile" from="LevelDisplay" to="." method="handle_click"]
+[connection signal="stoppedMoving" from="LevelDisplay" to="." method="finalize_step"]
+[connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
+[connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]

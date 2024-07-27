@@ -5,6 +5,7 @@ signal endMotion(loc:Vector2i,direction:int)
 @export var move_time:float=0.25
 @onready var start=Vector2(0,0)
 @onready var end=Vector2(0,0)
+var data=""
 var dirindex=0
 var agent=0
 # 0 = idle
@@ -21,7 +22,8 @@ func _process(_delta):
 	pass
 
 
-func apply_data(data:String):
+func apply_data(data_in:String):
+	data=data_in
 	var dataList=data.split("|")
 	if len(data)==0:
 		return

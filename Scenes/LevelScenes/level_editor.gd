@@ -43,7 +43,7 @@ func handle_click(mapCoords):
 		level.update_save()
 		level_save=level.curSave
 		level.load_level(level_save.copy())
-		print(level_save.get_full_layout())
+		print(level_save.playheads)
 		return
 	if first_placed==Vector2i.ONE*9999:
 		first_placed=mapCoords
