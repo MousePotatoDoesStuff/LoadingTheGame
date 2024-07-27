@@ -1,6 +1,7 @@
 extends Control
 var playhead=preload("res://Scenes/util/Playheads/playhead.tscn")
 signal stoppedMoving
+signal clickedTile(tilepos:Vector2i)
 
 @export var gridHalfsize:Vector2i=Vector2i(5,5)
 @onready var level=$LevelTileMap
@@ -24,17 +25,10 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(_delta):
-	return
-	'''
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouseCoords = get_global_mouse_position()
 		var mapCoords = $LevelTileMap.global_to_map(mouseCoords)
-		var reverseCoords = $LevelTileMap.map_to_global(mapCoords)
-		pront(level.get_cell_int(mapCoords))
-		pront(get_moves(mapCoords))
-		pront()
-		# pront(mouseCoords,"->",mapCoords,"->",reverseCoords)
-	'''
+		clickedTile.emit(mapCoords)
 
 func get_all_moves(mode:int):
 	for i in range(-gridHalfsize[1],gridHalfsize[1]):

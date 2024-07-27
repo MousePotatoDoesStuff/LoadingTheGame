@@ -20,7 +20,8 @@ func _process(delta):
 		return
 	time+=delta
 	var state:int=int(2*time/motionPeriod)&1
-	position=default+direction*extent*state
+	var diff=direction*extent*state
+	position=default+diff
 
 func recolor(color:Color):
 	$Element.color=color

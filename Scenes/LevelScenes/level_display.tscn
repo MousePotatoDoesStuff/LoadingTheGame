@@ -55,8 +55,12 @@ visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Crosshair" parent="." instance=ExtResource("6_36ioa")]
-layout_mode = 1
+[node name="Crosshair" parent="BarTileMap" instance=ExtResource("6_36ioa")]
 anchor_right = 0.1
 anchor_bottom = 0.1
-offset_bottom = 0.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -64.0
+offset_bottom = -64.0
+CrosshairMode = true
+extent = 5.0

@@ -9,7 +9,7 @@ var level_steps:Array[Save]=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# load_level(level.defaultLevelSave,false,false,false,-1)
+	load_level(level.defaultLevelSave,false,false,false,-1)
 	pass # Replace with function body.
 
 
@@ -20,12 +20,7 @@ func _process(delta):
 # Input handlers and updaters
 
 func IP_receive(input_data:Dictionary,args:Dictionary={}):
-	if "input_keys" in input_data:
-		var inpk:Dictionary = input_data["input_keys"]
-		var x = int(inpk.get("right",false))-int(inpk.get("up",false))
-		var y = int(inpk.get("down",false))-int(inpk.get("up",false))
-		var inputVector=Vector2i(x,y)
-		accept_input(0,inputVector)
+	pass
 
 func accept_input(agentID:int,move:Vector2i):
 	saved_input[agentID]=move
@@ -34,24 +29,17 @@ func play_level_audio(les:Save, mtype:String, key:String, default:String):
 	var audio=les.data.get(key,default)
 	IP_send_signal.emit({"audio":"audio play %s %s" % [mtype,audio]})
 
-# Loaders
+func handle_click(mapCoords):
+	print(mapCoords)
 
-func update_buttons(isFirst:bool,isUnsolved:bool):
-	var X = [
-		1,
-		2 if isFirst else 1,
-		2 if isUnsolved else 1
-	]
-	$LPMControl/LeftPlayMenu.toggleButtons(X)
+# Loaders
 
 func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool,setlen:int):
 	var inputSave=inputSaveBase.copy_all()
-	self.isUnsolved=isUnsolved
-	update_buttons(isFirst,isUnsolved)
 	level_save=inputSave.copy()
 	level_steps.clear()
 	level.load_level(inputSave)
-	play_level_audio(inputSave, "music", "play", "macleod1")
+	play_level_audio(inputSave, "music", "stop", "all")
 	
 	var id=inputSaveBase.get_id()
 	var name=inputSaveBase.get_name()

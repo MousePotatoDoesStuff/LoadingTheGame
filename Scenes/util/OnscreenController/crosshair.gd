@@ -2,6 +2,7 @@ extends Control
 
 @export var CrosshairMode:bool=false
 @export var CrosshairDirection:Vector2i=Vector2i.ZERO
+@export var extent:float=0.0
 # Called when the node enters the scene tree for the first time.
 @onready var hairs:Dictionary={
 	Vector2i(0,-1):$xm,
@@ -10,6 +11,8 @@ extends Control
 	Vector2i(-1,0):$mx
 }
 func _ready():
+	for part in self.get_children():
+		part.extent=extent
 	toggleState(CrosshairMode,CrosshairDirection,true)
 	pass
 

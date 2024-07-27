@@ -54,5 +54,6 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 0.0
+extent = 50.0
 
 [connection signal="ControlSignal" from="Control/Center" to="." method="SendControlSignal"]
