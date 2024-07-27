@@ -6,6 +6,9 @@ var saved_input:Dictionary={}
 @onready var level=$LevelDisplay
 var level_save:Save=null
 var level_steps:Array[Save]=[]
+var first_placed:Vector2i=Vector2i.ONE*9999
+var mode=0
+var isdelete=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +34,41 @@ func play_level_audio(les:Save, mtype:String, key:String, default:String):
 
 func handle_click(mapCoords):
 	print(mapCoords)
+	if mode==2:
+		save_undo()
+		if isdelete:
+			pass
+		else:
+			level.apply_playhead(mapCoords,"")
+			level.update_save()
+		return
+	if first_placed==Vector2i.ONE*9999:
+		first_placed=mapCoords
+		level.placeCrosshair(first_placed)
+		return
+	var isLine=util.GetV2iSimilarity(first_placed,mapCoords)
+	if isLine==2:
+		print("Clearing....")
+		mapCoords=Vector2i.ONE*9999
+	elif isLine==1:
+		save_undo()
+		print("Placing....")
+		level.apply_line(mode,first_placed,mapCoords,isdelete,true)
+		level_save=level.curSave
+		level.load_level(level_save.copy())
+	else:
+		print("Moving....")
+		pass
+	print(mapCoords,"->",first_placed)
+	first_placed=mapCoords
+	level.placeCrosshair(first_placed)
+func change_mode(new_mode,new_isdelete):
+	mode=new_mode
+	isdelete=new_isdelete
+	if new_mode==2:
+		first_placed=Vector2i.ONE*9999
+		level.placeCrosshair(first_placed)
+		return
 
 # Loaders
 
@@ -43,7 +81,8 @@ func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:
 	
 	var id=inputSaveBase.get_id()
 	var name=inputSaveBase.get_name()
-	$LPMControl/LevelDataDisplay.text="[center]%s\n%d/%d" % [name, id, setlen]
+	$LPMControl/LevelDataDisplay.text="[center]%s\n%s/%s" % [name, id, setlen]
+	return
 
 func export_level_data():
 	pass
@@ -63,9 +102,11 @@ func undo():
 	level.load_level(lastsave)
 
 func reset():
+	if not level_steps:
+		return
+	level_save=level_steps[0]
 	level_steps.clear()
 	level.load_level(level_save.copy())
-	play_level_audio(level_save, "music", "play", "macleod1")
 
 func menu_command(ID: int):
 	print("ID")

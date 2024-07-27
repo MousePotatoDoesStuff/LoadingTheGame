@@ -91,6 +91,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.975975, 1)
+editMode = true
 
 [node name="RightPlayMenu" type="Control" parent="."]
 layout_mode = 1
@@ -172,10 +173,12 @@ text = "Save and exit
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("7_ggl07")
 
+[connection signal="onSetFunction" from="LPMControl/FunctionToggle" to="." method="change_mode"]
 [connection signal="pressed" from="LPMControl/FunctionToggle/EditPaths" to="LPMControl/FunctionToggle" method="setFid" binds= [0]]
 [connection signal="pressed" from="LPMControl/FunctionToggle/EditTrails" to="LPMControl/FunctionToggle" method="setFid" binds= [1]]
 [connection signal="pressed" from="LPMControl/FunctionToggle/EditPlayheads" to="LPMControl/FunctionToggle" method="setFid" binds= [2]]
 [connection signal="pressed" from="LPMControl/FunctionToggle/EditSwitch tos" to="LPMControl/FunctionToggle" method="toggleDelete"]
+[connection signal="clickedTile" from="LevelDisplay" to="." method="handle_click"]
 [connection signal="stoppedMoving" from="LevelDisplay" to="." method="finalize_step"]
 [connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
 [connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]

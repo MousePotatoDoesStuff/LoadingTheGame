@@ -49,6 +49,13 @@ static func dot(A:Vector2i,B:Vector2i):
 	return A.x*B.x+A.y*B.y
 static func SplitVector2i(V:Vector2i)->Array[Vector2i]:
 	return [V*Vector2i.RIGHT,V*Vector2i.DOWN]
+static func GetV2iSimilarity(A:Vector2i,B:Vector2i)->int:
+	var sim=0
+	if A.x==B.x:
+		sim+=1
+	if A.y==B.y:
+		sim+=1
+	return sim
 
 # Multiplying strings
 static func strmul(element,count):

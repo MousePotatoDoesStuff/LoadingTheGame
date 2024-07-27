@@ -24,6 +24,7 @@ func setFunction(new_fid,new_delete):
 		var B=buttons[i]
 		B.toggle_button(delete)
 		B.disabled=fid==i
+	onSetFunction.emit(fid,delete)
 
 func setFid(new_fid):
 	setFunction(new_fid,delete)

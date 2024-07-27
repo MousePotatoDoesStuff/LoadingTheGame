@@ -50,17 +50,47 @@ layer_0/tile_data = PackedInt32Array(327675, 65536, 2, 327676, 65536, 1, 327677,
 script = ExtResource("4_18ik8")
 parentPath = NodePath("..")
 
+[node name="Hover" type="Control" parent="BarTileMap"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="HC" parent="BarTileMap/Hover" instance=ExtResource("6_36ioa")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 0.1
+anchor_bottom = 0.1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 6.4
+offset_bottom = 6.4
+CrosshairMode = true
+extent = 5.0
+
+[node name="Clicked" type="Control" parent="BarTileMap"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="CC" parent="BarTileMap/Clicked" instance=ExtResource("6_36ioa")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 0.1
+anchor_bottom = 0.1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 6.4
+offset_bottom = 6.4
+CrosshairMode = true
+extent = 5.0
+
 [node name="Playhead" parent="BarTileMap" instance=ExtResource("5_43a5b")]
 visible = false
 offset_right = 0.0
 offset_bottom = 0.0
-
-[node name="Crosshair" parent="BarTileMap" instance=ExtResource("6_36ioa")]
-anchor_right = 0.1
-anchor_bottom = 0.1
-offset_left = -80.0
-offset_top = -80.0
-offset_right = -64.0
-offset_bottom = -64.0
-CrosshairMode = true
-extent = 5.0

@@ -4,6 +4,7 @@ signal stoppedMoving
 signal clickedTile(tilepos:Vector2i)
 
 @export var gridHalfsize:Vector2i=Vector2i(5,5)
+@export var editMode=false
 @onready var level=$LevelTileMap
 @onready var bar=$BarTileMap
 @onready var playheads=[]
@@ -17,18 +18,42 @@ var defaultLevelSave=Save.new(
 	"////DE/\n///",
 	"AA/0,CC/1"
 )
+var mouseActive=false
 
 func _ready():
 	clear()
 	load_level(defaultLevelSave)
 	# level.set_cell_by_int(Vector2i(-5,-4),15)
-	pass # Replace with function body.
+	if editMode:
+		%Hover.show()
 
 func _process(_delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseCoords = get_global_mouse_position()
-		var mapCoords = $LevelTileMap.global_to_map(mouseCoords)
+	if not editMode:
+		%Hover.hide()
+		return
+	%Hover.show()
+	var mouseCoords = get_global_mouse_position()
+	var mapCoords = $LevelTileMap.global_to_map(mouseCoords)
+	placeCrosshair(mapCoords,true)
+	if not $LevelTileMap.isCellInMap(mapCoords):
+		return
+	var newMouse=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	if mouseActive and not newMouse:
 		clickedTile.emit(mapCoords)
+	mouseActive=newMouse
+func placeCrosshair(mapCoords,ishover=false):
+	var chosen=%Hover if ishover else %Clicked
+	if not $LevelTileMap.isCellInMap(mapCoords):
+		chosen.hide()
+		return
+	chosen.show()
+	var reverseCoords = $LevelTileMap.map_to_local(mapCoords)
+	if chosen.position==reverseCoords:
+		return
+	chosen.position=reverseCoords
+	if chosen==%Clicked:
+		return
+
 
 func get_all_moves(mode:int):
 	for i in range(-gridHalfsize[1],gridHalfsize[1]):
@@ -90,7 +115,7 @@ func save_level():
 func apply_line(type:int,start:Vector2i,end:Vector2i,deletion:bool,updateSave:bool=true):
 	var axisData=0
 	for i in range(2):
-		if start[i]==end[i]:
+		if start[i]!=end[i]:
 			axisData+=i+1
 	if axisData%3==0:
 		return
@@ -238,3 +263,6 @@ func isWin(agents:Dictionary={}):
 		if head.agent in agents:
 			head_list.append(head)
 	return arePlayheadsWinning(head_list)
+
+func getHalfsize():
+	return $LevelTileMap.gridHalfsize
