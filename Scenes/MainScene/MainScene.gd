@@ -40,11 +40,9 @@ func check_level_group_data():
 func load_level_group_data():
 	var F=null
 	var content=""
-	if not DirAccess.dir_exists_absolute(LEVELSET_FOLDER):
-		var dir = DirAccess.open(LEVELSET_FOLDER.get_base_dir())
-		if dir:
-			dir.make_dir_recursive(LEVELSET_FOLDER.get_file())
-	var dir=DirAccess.get_files_at(LEVELSET_FOLDER)
+	var dir=[]
+	if DirAccess.dir_exists_absolute(LEVELSET_FOLDER):
+		dir=DirAccess.get_files_at(LEVELSET_FOLDER)
 	current_levelset_ID=util.BASELEVELS
 	current_levelset=SaveGroup.fromString("")
 	levelsets[current_levelset_ID]=current_levelset
@@ -155,24 +153,24 @@ func to_menu(_choice_index=0, stackup=true):
 		self.save_save_data()
 	return SCTRL.switch
 
-func on_level_select(cursetid,level,mode,stackup:bool=false):
+func on_level_select(cursetid,levelID:int,mode,stackup:bool=false):
 	if cursetid == null:
 		cursetid=current_levelset_ID
 	current_levelset_ID=cursetid
 	current_levelset=levelsets[cursetid]
 	var path=["levelsets_progress",cursetid,"next_level"]
-	var highest=get_save_data(path,{"next_level":0},false)
+	var highest=get_save_data(path,0,true)
 	set_save_data(path,highest)
-	if level==-1:
-		level=highest
-	level=min(level,len(current_levelset.saves)-1)
+	if levelID==-1:
+		levelID=highest
+	levelID=min(levelID,len(current_levelset.saves)-1)
 	var level_mode=[ENUMS.screenum.PLAYER,ENUMS.screenum.EDITOR][mode]
 	var level_node=SCTRL.screen_node[level_mode]
-	var save:Save=current_levelset.saves[level]
+	var save:Save=current_levelset.saves[levelID]
 	SCTRL.set_screen(level_mode,stackup)
-	current_level=level
+	current_level=levelID
 	var size=current_levelset.saves.size()
-	level_node.load_level(save,false,level==0,level==highest,size)
+	level_node.load_level(save,false,levelID==0,levelID==highest,size)
 
 func next_level_from_player():
 	on_win(current_level)

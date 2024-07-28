@@ -1,10 +1,21 @@
 extends Control
 
 var AUDIOPATH="res://Assets/Audio/"
-var audio_dict={}
+var audio_dict={
+	"blipSelect": "res://Assets/Audio//Sound/blipSelect.wav",
+	"macleod1": "res://Assets/Audio//Music/macleod1.mp3",
+	"macleod1a": "res://Assets/Audio//Music/macleod1a.mp3",
+	"macleod1b": "res://Assets/Audio//Music/macleod1b.mp3",
+	"macleod2": "res://Assets/Audio//Music/macleod2.mp3",
+	"move1": "res://Assets/Audio//Sound/move1.wav",
+	"move2": "res://Assets/Audio//Sound/move2.wav"
+}
 var playing={}
 var is_looping={}
 var players={}
+var importables=[
+	
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	players={
@@ -22,6 +33,8 @@ func _ready():
 		timer.one_shot=true
 		timer.connect("timeout", call)
 		timer.start()
+	print("Audio dict (copy into code):")
+	print(JSON.stringify(audio_dict, "\t"))
 	# get_command("audio play music blipSelect noloop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
