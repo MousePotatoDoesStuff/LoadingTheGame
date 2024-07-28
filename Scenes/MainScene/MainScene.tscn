@@ -83,3 +83,5 @@ layout_mode = 1
 [connection signal="toMenu" from="ScreenController/LevelSequenceEditor" to="ScreenController" method="last_screen"]
 [connection signal="exit_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="last_screen"]
 [connection signal="save_level_signal" from="ScreenController/Level Raw Editor" to="ScreenController" method="edit_level_save"]
+[connection signal="exit_signal" from="ScreenController/LevelEditor" to="ScreenController" method="last_screen"]
+[connection signal="save_level_signal" from="ScreenController/LevelEditor" to="ScreenController" method="edit_level_save"]

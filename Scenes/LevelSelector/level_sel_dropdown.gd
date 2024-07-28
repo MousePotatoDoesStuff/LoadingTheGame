@@ -87,8 +87,8 @@ func insertElement(element):
 	addElement(element,index)
 	fileSaveSignal.emit()
 
-func editElement(elem_id):
-	editSignal.emit(levelset.saves[elem_id])
+func editElement(elem_id,israw:bool=true):
+	editSignal.emit(levelset.saves[elem_id],israw)
 	fileSaveSignal.emit()
 
 func moveElement(elem_id):

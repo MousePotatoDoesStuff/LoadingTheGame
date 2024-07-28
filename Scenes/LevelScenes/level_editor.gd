@@ -14,7 +14,7 @@ var isdelete=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_level(level.defaultLevelSave,false,false,false,-1)
+	load_level(level.defaultLevelSave)
 	pass # Replace with function body.
 
 
@@ -79,7 +79,7 @@ func change_mode(new_mode,new_isdelete):
 
 # Loaders
 
-func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:bool,setlen:int):
+func load_level(inputSaveBase:Save):
 	var inputSave=inputSaveBase.copy_all()
 	level_save=inputSave.copy()
 	level_steps.clear()
@@ -88,7 +88,7 @@ func load_level(inputSaveBase:Save,_editingEnabled:bool,isFirst:bool,isUnsolved:
 	
 	var id=inputSaveBase.get_id()
 	var name=inputSaveBase.get_name()
-	$LPMControl/LevelDataDisplay.text="[center]%s\n%s/%s" % [name, id, setlen]
+	$LPMControl/LevelDataDisplay.text="[center]%s\n%s/?" % [name, id]
 	return
 
 func export_level_data():
@@ -117,3 +117,10 @@ func reset():
 
 func menu_command(ID: int):
 	print("ID")
+
+func on_save():
+	save_level_signal.emit(level_save)
+
+func on_save_and_exit():
+	save_level_signal.emit(level_save)
+	exit_signal.emit()

@@ -182,3 +182,5 @@ script = ExtResource("7_ggl07")
 [connection signal="stoppedMoving" from="LevelDisplay" to="." method="finalize_step"]
 [connection signal="pressed" from="RightPlayMenu/Undo" to="." method="undo"]
 [connection signal="pressed" from="RightPlayMenu/Reset" to="." method="reset"]
+[connection signal="pressed" from="RightPlayMenu/Save" to="." method="on_save"]
+[connection signal="pressed" from="RightPlayMenu/Save and exit" to="." method="on_save_and_exit"]
