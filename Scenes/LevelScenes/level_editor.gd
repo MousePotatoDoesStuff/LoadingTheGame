@@ -1,6 +1,8 @@
 extends InputPasser
 
 signal command_signal(ID:int)
+signal save_level_signal(level_save: Save)
+signal exit_signal()
 var saved_input:Dictionary={}
 
 @onready var level=$LevelDisplay

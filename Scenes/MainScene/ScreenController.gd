@@ -2,7 +2,7 @@ extends InputPasser
 @onready var main_menu=$MainMenu
 @onready var level_player=$LevelPlayer
 @onready var raw_level_editor=$"Level Raw Editor"
-@onready var level_editor=$Settings
+@onready var level_editor=$LevelEditor
 @onready var level_selector=$LevelSelector
 @onready var levelset_manager=$LevelSequenceEditor
 @onready var intro_scene=$MainMenu

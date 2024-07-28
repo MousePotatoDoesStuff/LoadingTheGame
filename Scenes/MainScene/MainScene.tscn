@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1l53wagtm8ep"]
+[gd_scene load_steps=12 format=3 uid="uid://b1l53wagtm8ep"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene/MainScene.gd" id="1_wpvbo"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ScreenController.gd" id="2_3blif"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://47oenbci4as6" path="res://Scenes/SequenceEditor/level_sequence_editor.tscn" id="7_a1cum"]
 [ext_resource type="PackedScene" uid="uid://e83raqygpblo" path="res://Scenes/util/AudioController/audio_controller.tscn" id="8_b3cgm"]
 [ext_resource type="PackedScene" uid="uid://8lvldb7c57cl" path="res://Scenes/LevelSelector/level_raw_editor.tscn" id="9_u8ca7"]
+[ext_resource type="PackedScene" uid="uid://b3a07h7l7fvtt" path="res://Scenes/LevelScenes/level_editor.tscn" id="10_lxoll"]
 [ext_resource type="PackedScene" uid="uid://0vkvsfbcp2w6" path="res://Scenes/UI/popup_message.tscn" id="10_vvp0t"]
 
 [node name="MainScene" type="Control"]
@@ -50,6 +51,10 @@ layout_mode = 1
 visible = false
 
 [node name="Level Raw Editor" parent="ScreenController" instance=ExtResource("9_u8ca7")]
+visible = false
+layout_mode = 1
+
+[node name="LevelEditor" parent="ScreenController" instance=ExtResource("10_lxoll")]
 visible = false
 layout_mode = 1
 
