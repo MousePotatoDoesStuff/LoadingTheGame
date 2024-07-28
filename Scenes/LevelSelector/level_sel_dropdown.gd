@@ -1,6 +1,6 @@
 extends Control
 signal moveSignal(level:Save)
-signal editSignal(level:Save)
+signal editSignal(level:Save, israw:bool)
 signal fileSaveSignal
 
 @export var elementSize:float=300
@@ -23,13 +23,15 @@ func _process(delta):
 	pass
 
 func set_signals(lv_ins):
-	var lv_edit:Signal=lv_ins.editSignal
+	var lv_editGUI:Signal=lv_ins.editGUISignal
+	var lv_editRaw:Signal=lv_ins.editRawSignal
 	var lv_move:Signal=lv_ins.moveSignal
 	var lv_copy:Signal=lv_ins.copySignal
 	var lv_delete:Signal=lv_ins.deleteSignal
 	var lv_moveup:Signal=lv_ins.moveUpSignal
 	var lv_movedn:Signal=lv_ins.moveDnSignal
-	lv_edit.connect(editElement)
+	lv_editGUI.connect(editElementGUI)
+	lv_editRaw.connect(editElementRaw)
 	lv_move.connect(moveElement)
 	lv_copy.connect(copyElement)
 	lv_delete.connect(deleteElement)
@@ -87,8 +89,12 @@ func insertElement(element):
 	addElement(element,index)
 	fileSaveSignal.emit()
 
-func editElement(elem_id,israw:bool=true):
-	editSignal.emit(levelset.saves[elem_id],israw)
+func editElementGUI(elem_id):
+	editSignal.emit(levelset.saves[elem_id],false)
+	fileSaveSignal.emit()
+
+func editElementRaw(elem_id):
+	editSignal.emit(levelset.saves[elem_id],true)
 	fileSaveSignal.emit()
 
 func moveElement(elem_id):

@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://caybilu3wa5iy"]
+[gd_scene load_steps=24 format=3 uid="uid://caybilu3wa5iy"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelector/level_sel_frame.gd" id="1_d8tdi"]
 [ext_resource type="PackedScene" uid="uid://bb4jbbxf3h2ql" path="res://Scenes/LevelScenes/level_display.tscn" id="1_v42sm"]
+[ext_resource type="Texture2D" uid="uid://cn6cewh2j33bc" path="res://Assets/Images/buttons/editGUI.png" id="3_44frg"]
 [ext_resource type="Texture2D" uid="uid://bv56b825twsh0" path="res://Assets/Images/buttons/edit.png" id="3_d60yb"]
 [ext_resource type="Texture2D" uid="uid://drabhig4oebcf" path="res://Assets/Images/buttons/copy.png" id="3_jg3ae"]
 [ext_resource type="Texture2D" uid="uid://bg7gk76wtrirp" path="res://Assets/Images/buttons/edit_clicked.png" id="4_8tepy"]
+[ext_resource type="Texture2D" uid="uid://dqwwq3wmr78el" path="res://Assets/Images/buttons/editGUI_selected.png" id="4_b3ntx"]
 [ext_resource type="Texture2D" uid="uid://cuq473ju0hxo1" path="res://Assets/Images/buttons/copy_clicked.png" id="4_gsb68"]
 [ext_resource type="Texture2D" uid="uid://exjb2swig7t6" path="res://Assets/Images/buttons/edit_hover.png" id="5_5650h"]
+[ext_resource type="Texture2D" uid="uid://doyqsxqmg5lgn" path="res://Assets/Images/buttons/editGUI_hover.png" id="5_kt2tl"]
 [ext_resource type="Texture2D" uid="uid://cj3slcyhcowip" path="res://Assets/Images/buttons/copy_hover.png" id="5_t6hri"]
 [ext_resource type="Texture2D" uid="uid://dxur4lgmbx841" path="res://Assets/Images/buttons/duplicate.png" id="6_0drnq"]
 [ext_resource type="Texture2D" uid="uid://saw5hb7si61i" path="res://Assets/Images/buttons/duplicate_clicked.png" id="7_tyd6e"]
@@ -66,7 +69,17 @@ offset_bottom = 89.0
 bbcode_enabled = true
 text = "Type:"
 
-[node name="Edit" type="TextureButton" parent="."]
+[node name="EditGUI" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 145.0
+offset_right = 73.0
+offset_bottom = 177.0
+texture_normal = ExtResource("3_44frg")
+texture_pressed = ExtResource("4_b3ntx")
+texture_hover = ExtResource("5_kt2tl")
+
+[node name="EditRaw" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 200.0
@@ -78,10 +91,10 @@ texture_hover = ExtResource("5_5650h")
 
 [node name="Duplicate" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 200.0
-offset_right = 123.0
-offset_bottom = 232.0
+offset_left = 125.0
+offset_top = 145.0
+offset_right = 173.0
+offset_bottom = 177.0
 texture_normal = ExtResource("6_0drnq")
 texture_pressed = ExtResource("7_tyd6e")
 texture_hover = ExtResource("8_ei5lw")
@@ -126,7 +139,8 @@ texture_normal = ExtResource("15_6pgi8")
 texture_pressed = ExtResource("16_imiv1")
 texture_hover = ExtResource("17_1plov")
 
-[connection signal="pressed" from="Edit" to="." method="passEdit"]
+[connection signal="pressed" from="EditGUI" to="." method="passEditGUI"]
+[connection signal="pressed" from="EditRaw" to="." method="passEditRaw"]
 [connection signal="pressed" from="Duplicate" to="." method="passCopy"]
 [connection signal="pressed" from="Delete" to="." method="passDelete"]
 [connection signal="pressed" from="MoveUp" to="." method="passMoveUp"]

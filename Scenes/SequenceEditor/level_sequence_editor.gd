@@ -62,6 +62,12 @@ func on_show(data):
 	$CurLevelSet.arrange_elements()
 	
 
+func pass_edit_direct(level:Save, israw:bool=true):
+	pass_edit(level, false, israw)
+
+func pass_edit_clipboard(level:Save, israw:bool=true):
+	pass_edit(level, true, israw)
+
 func pass_edit(level:Save, is_clipboard:bool, israw:bool=true):
 	curIsClipboard=is_clipboard
 	curIndex=level.get_id()

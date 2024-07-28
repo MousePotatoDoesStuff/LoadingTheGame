@@ -1,5 +1,6 @@
 extends Control
-signal editSignal(index:int)
+signal editRawSignal(index:int)
+signal editGUISignal(index:int)
 signal moveSignal(index:int)
 signal copySignal(index:int)
 signal deleteSignal(index:int)
@@ -29,8 +30,11 @@ func load_level(_level:Save):
 	var index=level.get_id()
 	$Name.text=str(index)+". "+name
 
-func passEdit():
-	editSignal.emit(level.get_id())
+func passEditGUI():
+	editGUISignal.emit(level.get_id())
+
+func passEditRaw():
+	editRawSignal.emit(level.get_id())
 
 func passMove():
 	moveSignal.emit(level.get_id())

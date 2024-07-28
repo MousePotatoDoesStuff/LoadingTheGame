@@ -40,6 +40,10 @@ func check_level_group_data():
 func load_level_group_data():
 	var F=null
 	var content=""
+	if not DirAccess.dir_exists_absolute(LEVELSET_FOLDER):
+		var dir = DirAccess.open(LEVELSET_FOLDER.get_base_dir())
+		if dir:
+			dir.make_dir_recursive(LEVELSET_FOLDER.get_file())
 	var dir=DirAccess.get_files_at(LEVELSET_FOLDER)
 	current_levelset_ID=util.BASELEVELS
 	current_levelset=SaveGroup.fromString("")
