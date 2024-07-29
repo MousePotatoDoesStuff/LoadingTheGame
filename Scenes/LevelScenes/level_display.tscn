@@ -9,15 +9,10 @@
 
 [node name="LevelDisplay" type="Control"]
 layout_mode = 3
-anchor_left = 0.128
-anchor_top = 0.184
-anchor_right = 0.128
-anchor_bottom = 0.184
-offset_left = -204.8
-offset_top = -165.6
-offset_right = 1075.2
-offset_bottom = 1114.4
+anchor_right = 0.8
+anchor_bottom = 1.42222
 script = ExtResource("1_7jvln")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

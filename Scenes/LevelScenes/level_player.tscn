@@ -35,23 +35,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LevelDataDisplay" type="RichTextLabel" parent="LPMControl"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 38.0
-offset_right = 330.0
-offset_bottom = 134.0
+anchor_left = 0.131429
+anchor_top = 0.0422222
+anchor_right = 0.942857
+anchor_bottom = 0.148889
 bbcode_enabled = true
 text = "[center]Level Name Here"
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelDisplay" parent="." instance=ExtResource("1_ac4e0")]
 layout_mode = 1
 anchor_left = 0.219
-anchor_top = 0.0
 anchor_right = 0.768
 anchor_bottom = 1.0
 offset_left = -0.400024
-offset_top = 0.0
 offset_right = 21.2
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.975975, 1)
@@ -64,23 +62,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="LevelDisplay/Out Of Moves"]
-layout_mode = 0
-offset_left = 191.0
-offset_top = 284.0
-offset_right = 701.0
-offset_bottom = 592.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.212222
+anchor_top = 0.315556
+anchor_right = 0.778889
+anchor_bottom = 0.657778
 color = Color(0.211765, 0.243137, 0.321569, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LevelDisplay/Out Of Moves/ColorRect2"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.429
+offset_right = -8.0
+offset_bottom = -0.132004
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]
 StackOverflowError"
@@ -92,7 +94,6 @@ anchor_left = 0.0588235
 anchor_top = 0.519481
 anchor_right = 0.45098
 anchor_bottom = 0.844156
-theme_override_font_sizes/font_size = 32
 text = "Undo"
 metadata/_edit_use_anchors_ = true
 
@@ -103,7 +104,6 @@ anchor_left = 0.54902
 anchor_top = 0.519481
 anchor_right = 0.941176
 anchor_bottom = 0.844156
-theme_override_font_sizes/font_size = 32
 text = "Reset"
 metadata/_edit_use_anchors_ = true
 
@@ -126,12 +126,12 @@ color = Color(0.211765, 0.243137, 0.321569, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LevelDisplay/Complete/ColorRect2"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.429
+offset_bottom = -0.132004
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]
 Loading complete"
@@ -147,7 +147,6 @@ offset_left = 757.111
 offset_top = 132.01
 offset_right = 647.111
 offset_bottom = 170.41
-theme_override_font_sizes/font_size = 32
 text = "Continue
 "
 metadata/_edit_use_anchors_ = true
@@ -174,65 +173,55 @@ offset_left = 0.183846
 offset_top = 11.4742
 offset_right = 0.208862
 offset_bottom = 0.322426
-theme_override_font_sizes/font_size = 32
 text = "Undo"
 metadata/_edit_use_anchors_ = true
 
 [node name="Reset" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031
-anchor_top = 0.137
-anchor_right = 0.954
-anchor_bottom = 0.262
-offset_left = -7.37769
-offset_top = 42.9135
-offset_right = -7.35269
-offset_bottom = 41.7885
-theme_override_font_sizes/font_size = 32
+anchor_left = 0.00829941
+anchor_top = 0.190045
+anchor_right = 0.931376
+anchor_bottom = 0.313655
+offset_bottom = -1.52588e-05
 text = "Reset"
+metadata/_edit_use_anchors_ = true
 
 [node name="EditButton3" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 4.49552
-offset_top = 287.713
-offset_right = -20.5045
-offset_bottom = 227.713
-theme_override_font_sizes/font_size = 32
+anchor_left = 0.0138324
+anchor_top = 0.35564
+anchor_right = 0.936909
+anchor_bottom = 0.481475
 disabled = true
 text = "Edit"
+metadata/_edit_use_anchors_ = true
 
 [node name="Skip" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 6.29373
-offset_top = 413.587
-offset_right = -18.7063
-offset_bottom = 353.587
-theme_override_font_sizes/font_size = 32
+anchor_left = 0.0193653
+anchor_top = 0.511232
+anchor_right = 0.942442
+anchor_bottom = 0.637067
 disabled = true
 text = "Skip"
 script = ExtResource("4_wj7s4")
+metadata/_edit_use_anchors_ = true
 
 [node name="Continue" type="Button" parent="RightPlayMenu"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 4.49552
-offset_top = 537.663
-offset_right = -20.5045
-offset_bottom = 475.863
-theme_override_font_sizes/font_size = 32
+anchor_left = 0.0138324
+anchor_top = 0.664602
+anchor_right = 0.936909
+anchor_bottom = 0.788211
 disabled = true
 text = "Continue
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="Moves" type="RichTextLabel" parent="RightPlayMenu"]
 layout_mode = 1
@@ -250,34 +239,36 @@ text = "[center]Moves remaining:
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_right = 350.0
-offset_bottom = 400.0
+anchor_top = 0.615556
+anchor_right = 0.209932
+anchor_bottom = 0.997418
+offset_right = -33.8904
+offset_bottom = -34.676
 grow_vertical = 0
 scale = Vector2(1.11222, 1.11222)
+metadata/_edit_use_anchors_ = true
 
 [node name="Control2" type="Control" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.921
+anchor_top = 0.110569
+anchor_right = 0.921
+anchor_bottom = 0.111
+offset_left = -278.142
+offset_right = -28.142
+offset_bottom = 249.867
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.11222, 1.11222)
 script = ExtResource("3_qjyhk")
+metadata/_edit_use_anchors_ = true
 
 [node name="Controller" parent="Control/Control2" instance=ExtResource("3_5klic")]
 layout_mode = 1
-anchor_left = 0.141
-anchor_top = -0.627
-anchor_right = 0.713
-anchor_bottom = -0.127
-offset_left = 0.100544
-offset_top = -0.0491028
-offset_right = -0.0994873
-offset_bottom = -0.049118
+anchor_left = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+offset_bottom = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("5_i8yqm")

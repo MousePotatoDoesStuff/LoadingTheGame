@@ -1,3 +1,7 @@
 {
-
+	"levelsets_progress": {
+		"Base Levels": {
+			"next_level": 0
+		}
+	}
 }

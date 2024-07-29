@@ -13,34 +13,39 @@ script = ExtResource("1_lhlei")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
+anchor_left = 0.25
+anchor_top = 0.277778
+anchor_right = 0.75
+anchor_bottom = 0.722222
+offset_top = -1.52588e-05
 color = Color(0, 0, 0.270588, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="TextEdit" type="TextEdit" parent="ColorRect"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 8.0
-offset_right = 790.0
-offset_bottom = 308.0
+anchor_left = 0.0125
+anchor_top = 0.02
+anchor_right = 0.9875
+anchor_bottom = 0.77
+metadata/_edit_use_anchors_ = true
 
 [node name="Apply" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 325.0
-offset_right = 300.0
-offset_bottom = 375.0
+anchor_left = 0.125
+anchor_top = 0.8125
+anchor_right = 0.375
+anchor_bottom = 0.9375
 text = "Apply"
+metadata/_edit_use_anchors_ = true
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 500.0
-offset_top = 325.0
-offset_right = 700.0
-offset_bottom = 375.0
+anchor_left = 0.625
+anchor_top = 0.8125
+anchor_right = 0.875
+anchor_bottom = 0.9375
 text = "Close"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ColorRect/Apply" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="_on_button_2_pressed"]

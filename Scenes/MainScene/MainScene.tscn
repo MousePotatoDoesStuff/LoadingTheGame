@@ -34,6 +34,7 @@ script = ExtResource("2_3blif")
 
 [node name="MainMenu" parent="ScreenController" instance=ExtResource("3_qvptx")]
 visible = false
+layout_mode = 1
 
 [node name="LevelPlayer" parent="ScreenController" instance=ExtResource("3_h1vkt")]
 visible = false
