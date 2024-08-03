@@ -23,19 +23,23 @@ offset_right = -0.400024
 
 [node name="LevelDataDisplay" type="RichTextLabel" parent="LPMControl"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 38.0
-offset_right = 330.0
-offset_bottom = 134.0
+anchor_left = 0.131429
+anchor_top = 0.0422222
+anchor_right = 0.942857
+anchor_bottom = 0.148889
 bbcode_enabled = true
 text = "[center]Level Name Here"
+metadata/_edit_use_anchors_ = true
 
 [node name="FunctionToggle" type="Control" parent="LPMControl"]
-anchors_preset = 0
-offset_left = 57.0
-offset_top = 180.0
-offset_right = 319.0
-offset_bottom = 750.0
+layout_mode = 1
+anchor_left = 0.163
+anchor_top = 0.2
+anchor_right = 0.911
+anchor_bottom = 0.833
+offset_left = -0.0499954
+offset_right = 0.149994
+offset_bottom = 0.299927
 script = ExtResource("2_3ykr0")
 
 [node name="EditPaths" type="Button" parent="LPMControl/FunctionToggle"]
@@ -81,13 +85,10 @@ reverse = true
 [node name="LevelDisplay" parent="." instance=ExtResource("3_tngh3")]
 layout_mode = 1
 anchor_left = 0.219
-anchor_top = 0.0
 anchor_right = 0.768
 anchor_bottom = 1.0
 offset_left = -0.400024
-offset_top = 0.0
 offset_right = 21.2
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.975975, 1)
@@ -107,68 +108,60 @@ scale = Vector2(1.11222, 1.11222)
 [node name="Undo" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0243326
-anchor_top = 0.0180467
-anchor_right = 0.947333
-anchor_bottom = 0.155441
-offset_left = 0.183846
-offset_top = 11.4742
-offset_right = 0.208862
-offset_bottom = 0.322426
+anchor_left = 0.0248983
+anchor_top = 0.0322299
+anchor_right = 0.947976
+anchor_bottom = 0.15584
 theme_override_font_sizes/font_size = 32
 text = "Undo"
+metadata/_edit_use_anchors_ = true
 
 [node name="Reset" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.031
-anchor_top = 0.137
-anchor_right = 0.954
-anchor_bottom = 0.262
-offset_left = -7.37769
-offset_top = 42.9135
-offset_right = -7.35269
-offset_bottom = 41.7885
+anchor_left = 0.00829941
+anchor_top = 0.190045
+anchor_right = 0.931376
+anchor_bottom = 0.313655
+offset_bottom = -1.52588e-05
 theme_override_font_sizes/font_size = 32
 text = "Reset"
+metadata/_edit_use_anchors_ = true
 
 [node name="JSON editor" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 4.49552
-offset_top = 287.713
-offset_right = -20.5045
-offset_bottom = 227.713
+anchor_left = 0.0138324
+anchor_top = 0.35564
+anchor_right = 0.936909
+anchor_bottom = 0.481475
 theme_override_font_sizes/font_size = 32
 text = "JSON editor"
+metadata/_edit_use_anchors_ = true
 
 [node name="Save" type="Button" parent="RightPlayMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 6.29373
-offset_top = 413.587
-offset_right = -18.7063
-offset_bottom = 353.587
+anchor_left = 0.0193653
+anchor_top = 0.511232
+anchor_right = 0.942442
+anchor_bottom = 0.637067
 theme_override_font_sizes/font_size = 32
 text = "Save"
+metadata/_edit_use_anchors_ = true
 
 [node name="Save and exit" type="Button" parent="RightPlayMenu"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_left = 4.49552
-offset_top = 537.663
-offset_right = -20.5045
-offset_bottom = 475.863
+anchor_left = 0.0138324
+anchor_top = 0.664602
+anchor_right = 0.936909
+anchor_bottom = 0.788211
 theme_override_font_sizes/font_size = 32
 text = "Save and exit
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("7_ggl07")

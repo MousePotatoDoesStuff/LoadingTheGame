@@ -50,6 +50,7 @@ layout_mode = 1
 
 [node name="LevelSequenceEditor" parent="ScreenController" instance=ExtResource("7_a1cum")]
 visible = false
+layout_mode = 1
 
 [node name="Level Raw Editor" parent="ScreenController" instance=ExtResource("9_u8ca7")]
 visible = false
@@ -60,8 +61,8 @@ visible = false
 layout_mode = 1
 
 [node name="PopupMessage" parent="." instance=ExtResource("10_vvp0t")]
-visible = false
 layout_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="IP_send_signal" from="ScreenController" to="AudioController" method="get_input_pass"]
 [connection signal="other_signal" from="ScreenController/MainMenu" to="ScreenController" method="from_main"]

@@ -14,23 +14,24 @@ script = ExtResource("1_mbgdc")
 
 [node name="DisplayWindow" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.4375
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 700.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.211765, 0.243137, 0.321569, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="TextWindow" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.4375
 anchor_bottom = 1.0
-offset_right = -900.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.211765, 0.243137, 0.321569, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="RichTextLabel" parent="TextWindow"]
 layout_mode = 1
@@ -47,6 +48,7 @@ theme_override_font_sizes/bold_italics_font_size = 42
 theme_override_font_sizes/mono_font_size = 42
 bbcode_enabled = true
 text = "[center]LevelName"
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelData" type="TextEdit" parent="TextWindow"]
 layout_mode = 1
@@ -56,6 +58,7 @@ offset_left = 50.0
 offset_top = 150.0
 offset_right = -50.0
 offset_bottom = 550.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Save" type="Button" parent="TextWindow"]
 layout_mode = 0
@@ -65,6 +68,7 @@ offset_right = 225.0
 offset_bottom = 850.0
 text = "Save
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="SaveAndExit" type="Button" parent="TextWindow"]
 layout_mode = 0
@@ -73,6 +77,7 @@ offset_top = 775.0
 offset_right = 425.0
 offset_bottom = 850.0
 text = "Save And Exit"
+metadata/_edit_use_anchors_ = true
 
 [node name="Exit" type="Button" parent="TextWindow"]
 layout_mode = 0
@@ -82,6 +87,7 @@ offset_right = 625.0
 offset_bottom = 850.0
 text = "Exit
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="TextWindow"]
 layout_mode = 0
@@ -90,6 +96,7 @@ offset_top = 600.0
 offset_right = 650.0
 offset_bottom = 750.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ErrorText" type="RichTextLabel" parent="TextWindow/ColorRect"]
 layout_mode = 0
@@ -101,17 +108,14 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 text = "Ready for pizza"
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelDisplay" parent="." instance=ExtResource("1_gllkh")]
 layout_mode = 1
-anchor_left = 0.398
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 113.2
-offset_top = 50.0
-offset_right = -50.0
-offset_bottom = -50.0
+anchor_left = 0.46875
+anchor_top = 0.0555556
+anchor_right = 0.96875
+anchor_bottom = 0.944444
 
 [connection signal="pressed" from="TextWindow/Save" to="." method="save_level"]
 [connection signal="pressed" from="TextWindow/SaveAndExit" to="." method="save_and_exit"]

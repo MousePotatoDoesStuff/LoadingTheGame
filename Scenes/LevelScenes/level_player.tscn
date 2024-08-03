@@ -211,16 +211,14 @@ script = ExtResource("4_wj7s4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Continue" type="Button" parent="RightPlayMenu"]
-custom_minimum_size = Vector2(300, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0138324
+anchor_left = 0.00829942
 anchor_top = 0.664602
-anchor_right = 0.936909
-anchor_bottom = 0.788211
+anchor_right = 0.931376
+anchor_bottom = 0.790437
 disabled = true
-text = "Continue
-"
+text = "Continue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Moves" type="RichTextLabel" parent="RightPlayMenu"]
