@@ -3,5 +3,11 @@
 		"Base Levels": {
 			"next_level": 1
 		}
+	},
+	"settings": {
+		"music": {
+			"muted": false,
+			"volume": 82
+		}
 	}
 }
