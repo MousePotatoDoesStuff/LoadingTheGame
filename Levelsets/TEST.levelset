@@ -18,12 +18,103 @@
 			"skip": 2
 		},
 		{
-			"bar": "/////////////////////\n/",
+			"bar": "////DE/\n///",
 			"halfsize": [
-				5,
-				5
+				8,
+				8
 			],
 			"id": 1,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 2,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 3,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 4,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 5,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 6,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "////DE/\n///",
+			"halfsize": [
+				8,
+				8
+			],
+			"id": 7,
+			"level": "AI////AI/\nAG//CG/",
+			"maxMoves": 7,
+			"name": "Untitled Level",
+			"playheads": "AA/0,CC/1",
+			"skip": 2
+		},
+		{
+			"bar": "/////////////////////\n/",
+			"halfsize": [
+				10,
+				10
+			],
+			"id": 8,
 			"level": "Ae////////////////////Ae/\n/",
 			"name": "DefaultLevel",
 			"playheads": "AA"
