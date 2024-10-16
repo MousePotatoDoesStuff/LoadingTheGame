@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3jw65ah1kbkr" path="res://Assets/icon.svg" id="1_4ko27"]
 [ext_resource type="Script" path="res://Scenes/util/Playheads/playhead.gd" id="1_7wxlw"]
 
+
 [node name="Playhead" type="Control"]
 layout_mode = 3
 anchors_preset = 15
